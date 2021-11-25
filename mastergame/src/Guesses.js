@@ -14,23 +14,50 @@ export default function Guesses({sequence}) {
     const handleThird = (e) => setThird(e.target.value)
     const handleFourth = (e) => setFourth(e.target.value)
     
+    const [hint, setHint] = useState("")
+    const [guessTried, setGuessTried] = useState([])
+    const [turns, setTurns] = useState(10)
     
     let playerGuess = []
     playerGuess.push(first, second, third, fourth)
-    let maxTurns = 10
-    let currentTurn = 0
     let i;
-    // console.log(playerGuess)
-    // console.log(sequence)
+    let numberCount = 0;
+    let arrayOfGuesses =[];
+    
+    
+    
 
+    // let result = sequence.map((element, index) => {
+       //     console.log(element, index)
+           
+           
+       //     if (playerGuess[i] === element){
+       //        console.log("right number wrong index" + element)
+       //     }
+           
+       //     else if (playerGuess[i] === element && index){
+       //         console.log("right number and right index" + element, index)
+       //     }
+       // })
+   
+    
+       
     function handleGuess() {
+        
+        setTurns(() => turns -1)
+        arrayOfGuesses.push(playerGuess)
+        setGuessTried(`you have tried ${arrayOfGuesses}`)
+        
         for(i = 0; i < sequence.length; i++) {
-            if(playerGuess[i] === sequence[i]) {
-                console.log(playerGuess[i])
+            
+            if (sequence[i] === playerGuess[i]) {
+                // console.log("right number right index")
+                numberCount++;
+                setHint(`${numberCount} right number(s), right position(s)`)
+                
             }
         }
-    }
-    
+     }
     
     
     return (
@@ -42,6 +69,9 @@ export default function Guesses({sequence}) {
                 <input value={fourth} onChange={handleFourth} type="number"></input>
                 <br/>
                 <button onClick={handleGuess}>Guess!</button>
+                <p>{guessTried}</p>
+                <p>{hint}</p>
+                <p>you have {turns} guesses left</p>
             </div>
         </div>
     )
