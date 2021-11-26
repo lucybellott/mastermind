@@ -2,7 +2,7 @@ import React from 'react'
 import {useState} from 'react'
 
 export default function Guesses({sequence}) {
-    console.log(sequence)
+    
 
     const [first, setFirst] = useState("0")
     const [second, setSecond] = useState("0")
@@ -18,27 +18,14 @@ export default function Guesses({sequence}) {
     const [guessTried, setGuessTried] = useState([])
     const [turns, setTurns] = useState(10)
     
-    let playerGuess = []
+    let playerGuess = [];
     playerGuess.push(first, second, third, fourth)
     let i;
     let numberCount = 0;
     let arrayOfGuesses =[];
     
     
-    
-
-    // let result = sequence.map((element, index) => {
-       //     console.log(element, index)
-           
-           
-       //     if (playerGuess[i] === element){
-       //        console.log("right number wrong index" + element)
-       //     }
-           
-       //     else if (playerGuess[i] === element && index){
-       //         console.log("right number and right index" + element, index)
-       //     }
-       // })
+        
    
     
        
@@ -46,14 +33,25 @@ export default function Guesses({sequence}) {
         
         setTurns(() => turns -1)
         arrayOfGuesses.push(playerGuess)
-        setGuessTried(`you have tried ${arrayOfGuesses}`)
+        setGuessTried(`You have tried ${arrayOfGuesses}`)
+
+        // let result = sequence.map((element, index) => {
+        //     console.log(element, index)
+            
+        //     if (playerGuess[i] === element){
+        //        console.log("right number wrong index" + element)
+        //     }
+            
+        //     else if (playerGuess[i] === element && index){
+        //         console.log("right number and right index" + element, index)
+        //     }
+        //  })
         
         for(i = 0; i < sequence.length; i++) {
             
             if (sequence[i] === playerGuess[i]) {
                 numberCount++;
                 setHint(`${numberCount} right number(s), right position(s)`)
-                
             }
         }
      }
@@ -68,7 +66,7 @@ export default function Guesses({sequence}) {
                 <input style={{backgroundColor:"black", color:"green"}} value={fourth} onChange={handleFourth} type="number"></input>
                 <br/>
                 <br/>
-                <button type="button" class="btn btn-success" onClick={handleGuess}>Guess!</button>
+                <button type="button" className="btn btn-success" onClick={handleGuess}>Guess!</button>
                 <br/>
                 <br/>
                 <p>You have {turns} guesses left</p>
