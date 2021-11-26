@@ -15,43 +15,34 @@ export default function Guesses({sequence}) {
     const handleFourth = (e) => setFourth(e.target.value)
     
     const [hint, setHint] = useState("")
+    const [indexHint, setIndexHint] = useState("")
     const [guessTried, setGuessTried] = useState([])
     const [turns, setTurns] = useState(10)
     
     let playerGuess = [];
-    playerGuess.push(first, second, third, fourth)
+        playerGuess.push(first, second, third, fourth)
     let i;
     let numberCount = 0;
+    let wrongIndexCount = 0;
     let arrayOfGuesses =[];
     
     
-        
-   
-    
-       
-    function handleGuess() {
-        
+     function handleGuess() {
+        // console.log(arrayOfGuesses)
         setTurns(() => turns -1)
         arrayOfGuesses.push(playerGuess)
         setGuessTried(`You have tried ${arrayOfGuesses}`)
 
-        // let result = sequence.map((element, index) => {
-        //     console.log(element, index)
-            
-        //     if (playerGuess[i] === element){
-        //        console.log("right number wrong index" + element)
-        //     }
-            
-        //     else if (playerGuess[i] === element && index){
-        //         console.log("right number and right index" + element, index)
-        //     }
-        //  })
-        
+
         for(i = 0; i < sequence.length; i++) {
             
             if (sequence[i] === playerGuess[i]) {
                 numberCount++;
                 setHint(`${numberCount} right number(s), right position(s)`)
+            }
+            if (sequence[i] !== playerGuess[i] && playerGuess.includes(sequence[i])) {
+                wrongIndexCount++;
+                setIndexHint(`${wrongIndexCount} right number(s), wrong position(s)`)
             }
         }
      }
@@ -72,6 +63,7 @@ export default function Guesses({sequence}) {
                 <p>You have {turns} guesses left</p>
                 <p>{guessTried}</p>
                 <p>{hint}</p>
+                <p>{indexHint}</p>
             </div>
         </div>
     )
