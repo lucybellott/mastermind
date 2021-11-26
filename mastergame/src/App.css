@@ -1,10 +1,36 @@
 .App {
   text-align: center;
+  color: green;
+  background-color:rgb(26, 24, 24);
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  background: url("https://ak.picdn.net/shutterstock/videos/1022149381/thumb/1.jpg?ip=x480");
+  height: 150px;
+  padding-top: 60px;
+}
+
+input {
+  text-align: center;
+  width: 8%;
+  height: 45px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+  border-radius: 20px;
+  box-shadow: inset 6px 6px 6px #0a0a0a, inset -6px -6px 6px rgb(71, 69, 69);
+  border: none;
+}
+
+.numbers {
+  
+  text-align: center;
+  background-color: rgb(26, 24, 24);
+  color:green;
+  position: absolute;
+  width: 100%; 
+  height: 100%;
 }
 
 @media (prefers-reduced-motion: no-preference) {

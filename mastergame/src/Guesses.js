@@ -2,7 +2,7 @@ import React from 'react'
 import {useState} from 'react'
 
 export default function Guesses({sequence}) {
-    
+    console.log(sequence)
 
     const [first, setFirst] = useState("0")
     const [second, setSecond] = useState("0")
@@ -51,7 +51,6 @@ export default function Guesses({sequence}) {
         for(i = 0; i < sequence.length; i++) {
             
             if (sequence[i] === playerGuess[i]) {
-                // console.log("right number right index")
                 numberCount++;
                 setHint(`${numberCount} right number(s), right position(s)`)
                 
@@ -61,17 +60,20 @@ export default function Guesses({sequence}) {
     
     
     return (
-        <div>
-            <div style={{float:'left'}} className="numbers">
-                <input value={first} onChange={handleFirst} type="number"></input>
-                <input value ={second} onChange={handleSecond} type="number"></input>
-                <input value={third} onChange={handleThird} type="number"></input>
-                <input value={fourth} onChange={handleFourth} type="number"></input>
+        <div className="numbers">
+            <div>
+                <input style={{backgroundColor:"black", color:"green"}} value={first} onChange={handleFirst} type="number"></input>
+                <input style={{backgroundColor:"black", color:"green"}} value ={second} onChange={handleSecond} type="number"></input>
+                <input style={{backgroundColor:"black", color:"green"}} value={third} onChange={handleThird} type="number"></input>
+                <input style={{backgroundColor:"black", color:"green"}} value={fourth} onChange={handleFourth} type="number"></input>
                 <br/>
-                <button onClick={handleGuess}>Guess!</button>
+                <br/>
+                <button type="button" class="btn btn-success" onClick={handleGuess}>Guess!</button>
+                <br/>
+                <br/>
+                <p>You have {turns} guesses left</p>
                 <p>{guessTried}</p>
                 <p>{hint}</p>
-                <p>you have {turns} guesses left</p>
             </div>
         </div>
     )

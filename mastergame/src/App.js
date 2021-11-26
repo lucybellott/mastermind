@@ -25,10 +25,10 @@ function App() {
      
   
   return (
-    <div className="App">
+    <div className="numbers">
       <h1>Mastermind</h1>
       
-      <Secret sequence={sequence}/>
+       <Secret sequence={sequence}/>
       <Guesses sequence={sequence}/>
     </div>
   );
