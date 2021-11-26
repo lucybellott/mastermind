@@ -1,6 +1,9 @@
 import React from 'react'
 
 export default function Secret({sequence}) {
+    
+  
+    
     return (
         <div style={{color: "antiquewhite", marginTop:"20px"}}>
             <em style={{fontWeight: "bold"}}>Can you break the hidden code?</em>

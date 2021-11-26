@@ -18,6 +18,7 @@ export default function Guesses({sequence}) {
     const [indexHint, setIndexHint] = useState("")
     const [guessTried, setGuessTried] = useState([])
     const [turns, setTurns] = useState(10)
+    const [win, setWin] = useState(false)
     
     let playerGuess = [];
         playerGuess.push(first, second, third, fourth)
@@ -25,7 +26,8 @@ export default function Guesses({sequence}) {
     let numberCount = 0;
     let wrongIndexCount = 0;
     let arrayOfGuesses =[];
-    
+
+
     
      function handleGuess() {
         // console.log(arrayOfGuesses)
@@ -44,8 +46,14 @@ export default function Guesses({sequence}) {
                 wrongIndexCount++;
                 setIndexHint(`${wrongIndexCount} right number(s), wrong position(s)`)
             }
+            if (sequence[i] === playerGuess[i] && numberCount == 4) {
+                setWin(true)
+            }
+           
         }
      }
+
+   
     
     
     return (
@@ -57,13 +65,20 @@ export default function Guesses({sequence}) {
                 <input style={{backgroundColor:"black", color:"green"}} value={fourth} onChange={handleFourth} type="number"></input>
                 <br/>
                 <br/>
-                <button type="button" className="btn btn-success" onClick={handleGuess}>Guess!</button>
-                <br/>
-                <br/>
-                <p>You have {turns} guesses left</p>
-                <p>{guessTried}</p>
-                <p>{hint}</p>
-                <p>{indexHint}</p>
+                {turns > 0 && win === true ?
+                    <p>You win!</p> 
+                    : turns > 0 ?
+                        <div>
+                        <button type="button" className="btn btn-success" onClick={handleGuess}>Guess!</button>
+                        <br/>
+                        <br/>
+                        <p>You have {turns} guesses left</p>
+                        <p>{guessTried}</p>
+                        <p>{hint}</p>
+                        <p>{indexHint}</p>
+                        </div>
+                        : <p>You're out of turns</p>
+                }
             </div>
         </div>
     )
