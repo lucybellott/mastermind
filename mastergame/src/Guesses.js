@@ -1,5 +1,5 @@
 import React from 'react'
-import {useState} from 'react'
+import {useState, useRef} from 'react'
 
 export default function Guesses({sequence}) {
     
@@ -14,48 +14,60 @@ export default function Guesses({sequence}) {
     const handleThird = (e) => setThird(e.target.value)
     const handleFourth = (e) => setFourth(e.target.value)
     
-    const [hint, setHint] = useState("")
-    const [indexHint, setIndexHint] = useState("")
-    const [guessTried, setGuessTried] = useState([])
+    // const [hint, setHint] = useState("")
+    // let refHint = useRef('')
+    // const [indexHint, setIndexHint] = useState("")
+    // const [guessTried, setGuessTried] = useState([])
     const [turns, setTurns] = useState(10)
     const [win, setWin] = useState(false)
-    
+    const [logfile, setLogfile] =useState([])
     let playerGuess = [];
         playerGuess.push(first, second, third, fourth)
     let i;
     let numberCount = 0;
     let wrongIndexCount = 0;
-    let arrayOfGuesses =[];
-
+    // let arrayOfGuesses =[];
 
     
+console.log(logfile)
+    
      function handleGuess() {
+        let rightInfo = ""
+        let wrongIndex = ""
         // console.log(arrayOfGuesses)
         setTurns(() => turns -1)
-        arrayOfGuesses.push(playerGuess)
-        setGuessTried(`You have tried ${arrayOfGuesses}`)
+       
+        // arrayOfGuesses.push(playerGuess)
+        // setGuessTried(`You have tried ${arrayOfGuesses}`)
 
-
+        
+        
+        
         for(i = 0; i < sequence.length; i++) {
-            
+           
             if (sequence[i] === playerGuess[i]) {
                 numberCount++;
-                setHint(`${numberCount} right number(s), right position(s)`)
+                rightInfo = `${numberCount} right number(s), right position(s)`
+                // setHint(`${numberCount} right number(s), right position(s)`)
             }
             if (sequence[i] !== playerGuess[i] && playerGuess.includes(sequence[i])) {
                 wrongIndexCount++;
-                setIndexHint(`${wrongIndexCount} right number(s), wrong position(s)`)
+                wrongIndex =`${wrongIndexCount} right number(s), wrong position(s)`
+                // setIndexHint(`${wrongIndexCount} right number(s), wrong position(s)`)
+                
             }
             if (sequence[i] === playerGuess[i] && numberCount == 4) {
                 setWin(true)
             }
            
         }
+            
+        const data = {hint: rightInfo, sequence: playerGuess, wrong: wrongIndex}
+        setLogfile([...logfile, data])
+       
      }
 
    
-    
-    
     return (
         <div className="numbers">
             <div>
@@ -66,18 +78,20 @@ export default function Guesses({sequence}) {
                 <br/>
                 <br/>
                 {turns > 0 && win === true ?
-                    <p>You win!</p> 
+                    <h4 style={{color: "red"}}>👏👏🎊 You win!!! 🎉👏👏</h4> 
                     : turns > 0 ?
                         <div>
                         <button type="button" className="btn btn-success" onClick={handleGuess}>Guess!</button>
                         <br/>
                         <br/>
                         <p>You have {turns} guesses left</p>
-                        <p>{guessTried}</p>
-                        <p>{hint}</p>
-                        <p>{indexHint}</p>
+                        {/* <p>{guessTried}</p> */}
+                        {/* <p>{hint}</p>
+                        <p>{indexHint}</p> */}
+
+                        {logfile.map(item => <p>{item.sequence}  <span>{item.hint}</span> <span>{item.wrong}</span></p> )}
                         </div>
-                        : <p>You're out of turns</p>
+                        : <h5>You're out of guesses 🐴</h5>
                 }
             </div>
         </div>
