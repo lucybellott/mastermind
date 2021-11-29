@@ -26,11 +26,11 @@ Running it locally:
 
 In your terminal, navigate to the directory where you would like to clone this repository
 
-### Run `git clone git@github.com:lucybellott/linkedinmaster.git`
-### cd  `mastergame`
-### Run `npm install`
-### Run `npm start`
-### The game will start on port 3000
+#### Run `git clone git@github.com:lucybellott/linkedinmaster.git`
+#### cd  `mastergame`
+#### Run `npm install`
+#### Run `npm start`
+#### The game will start on port 3000
 
 
 
