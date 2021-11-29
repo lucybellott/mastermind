@@ -1,5 +1,6 @@
 # Mastermind
-![mastermind](https://i.ibb.co/n1NP8NR/Screen-Shot-2021-11-29-at-4-27-23-PM.png)
+![mastermind](https://iili.io/5Q7Je9.png)
+<br/>
 
 Mastermind is a game where the computer generates a secret code of four numbers between 0 and 7. The player must guess the secret code based on hints provided. The computer will inform the player when:
 <br/>
