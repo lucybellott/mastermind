@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css';
-import Guesses from './Guesses'
+import Game from './Game'
 import {useState, useEffect} from 'react'
 import Secret from './Secret'
 
@@ -28,8 +28,7 @@ function App() {
     <div className="numbers">
       <h1>Mastermind</h1>
       
-       <Secret sequence={sequence}/>
-      <Guesses sequence={sequence}/>
+      <Game sequence={sequence}/>
     </div>
   );
 }
