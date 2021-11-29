@@ -1,7 +1,15 @@
 # Mastermind
 
-Mastermind is a game where the computer generates a secret code of four numbers between 0 and 7. The player must guess the secret code based on hints provided. The computer will inform when the player has guessed a correct number in the correct position, a correct number in the wrong position or if none of the numbers are correct. It will not reveal which number was guessed correctly.
+Mastermind is a game where the computer generates a secret code of four numbers between 0 and 7. The player must guess the secret code based on hints provided. The computer will inform the player when:
+They have guessed a correct number in the correct position.
+They have guessed a correct number in the wrong position. 
+If none of the numbers guessed are correct. 
+It will not reveal which number was guessed correctly.
 A player will have 10 attempts to guess the combination.
+
+## Tech 
+
+This project was built using React and Bootstrap
 
 ## Available Scripts
 
@@ -18,11 +26,11 @@ Running it locally:
 
 In your terminal, navigate to the directory where you would like to clone this repository
 
-Run `git clone git@github.com:lucybellott/linkedinmaster.git`
-cd  `mastergame`
-Run `npm install`
-Run `npm start`
-The game will start on port 3000
+### Run `git clone git@github.com:lucybellott/linkedinmaster.git`
+### cd  `mastergame`
+### Run `npm install`
+### Run `npm start`
+### The game will start on port 3000
 
 
 
