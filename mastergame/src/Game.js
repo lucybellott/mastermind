@@ -29,6 +29,7 @@ export default function Guesses({sequence}) {
      function handleGuess() {
         let rightNumberAndIndex = ""
         let wrongIndex = ""
+        let allWrongGuess =""
         setTurns(() => turns -1)
        
         
@@ -42,16 +43,26 @@ export default function Guesses({sequence}) {
             if (sequence[i] !== playerGuess[i] && playerGuess.includes(sequence[i])) {
                 wrongIndexCount++;
                 wrongIndex =`${wrongIndexCount} right number(s) in the wrong position(s)`
-                
-                
             }
-            if (sequence[i] === playerGuess[i] && rightNumberAndIndexCount == 4) {
+          
+             if (sequence[i] === playerGuess[i] && rightNumberAndIndexCount == 4) {
                 setWin(true)
             }
+
+             else {
+                 console.log("wrong guess")
+                 allWrongGuess = "No correct numbers :("
+                 
+             }
            
         }
             
-        const data = {hint: rightNumberAndIndex, sequence: playerGuess, wrong: wrongIndex}
+        const data = {correctAnswer: rightNumberAndIndex, 
+                      guessedSequence: playerGuess, 
+                      wrongPosition: wrongIndex,
+                      wrongGuess: allWrongGuess
+                    }
+        
         setLogfile([...logfile, data])
        
      }
@@ -78,8 +89,10 @@ export default function Guesses({sequence}) {
                         
 
                         {logfile.map(item => <div>
-                            <p>You guessed {item.sequence}.</p>
-                            <span style={{color: "limegreen"}}>{item.hint}</span> <span style={{color: "red"}}>{item.wrong}</span>
+                            <p>You guessed {item.guessedSequence}.</p>
+                            <span style={{color: "limegreen"}}>{item.correctAnswer}</span> <span style={{color: "red"}}>{item.wrongPosition}</span>
+                            <span>{item.wrongGuess}</span>
+                            
                             <br/><br/>
                             </div> )}
                         </div>
