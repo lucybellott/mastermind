@@ -25,13 +25,12 @@ export default function Guesses({sequence}) {
     let wrongIndexCount = 0;
    
 
-
      function handleGuess() {
         let rightNumberAndIndex = ""
         let wrongIndex = ""
         let allWrongGuess =""
         setTurns(() => turns -1)
-       
+        
         
         for(i = 0; i < sequence.length; i++) {
            
@@ -44,19 +43,16 @@ export default function Guesses({sequence}) {
                 wrongIndexCount++;
                 wrongIndex =`${wrongIndexCount} right number(s) in the wrong position(s)`
             }
-          
-             if (sequence[i] === playerGuess[i] && rightNumberAndIndexCount == 4) {
+            
+            if (sequence[i] === playerGuess[i] && rightNumberAndIndexCount == 4) {
                 setWin(true)
             }
-
-             else {
-                 console.log("wrong guess")
-                 allWrongGuess = "No correct numbers :("
-                 
-             }
            
         }
-            
+       
+        if(rightNumberAndIndex === "" && wrongIndex ==="" ){
+            allWrongGuess = "No correct numbers"
+        } 
         const data = {correctAnswer: rightNumberAndIndex, 
                       guessedSequence: playerGuess, 
                       wrongPosition: wrongIndex,
@@ -64,7 +60,7 @@ export default function Guesses({sequence}) {
                     }
         
         setLogfile([...logfile, data])
-       
+                
      }
 
    
@@ -81,20 +77,20 @@ export default function Guesses({sequence}) {
                 {turns > 0 && win === true ?
                     <h4 style={{color: "limegreen"}}>👏👏🎉 You win!!! 🎉👏👏</h4> 
                     : turns > 0 ?
-                        <div>
+                     <div>
                         <button type="button" className="btn btn-success" onClick={handleGuess}>Guess!</button>
                         <br/>
                         <br/>
                         <p>You have {turns} guesses left</p>
-                        
-
-                        {logfile.map(item => <div>
-                            <p>You guessed {item.guessedSequence}.</p>
-                            <span style={{color: "limegreen"}}>{item.correctAnswer}</span> <span style={{color: "red"}}>{item.wrongPosition}</span>
-                            <span>{item.wrongGuess}</span>
-                            
-                            <br/><br/>
+                       
+                        <hr/>
+                        {logfile.map(item => 
+                           <div>
+                              <p>You guessed {item.guessedSequence}.</p>
+                              <span style={{color: "limegreen"}}>{item.correctAnswer}</span> <span style={{color: "red"}}>{item.wrongPosition}</span> <span style={{color: "red"}}>{item.wrongGuess}</span> 
+                              <br/><br/>
                             </div> )}
+                            
                         </div>
                         : <h5>❌ You're out of guesses ❌</h5>
                 }
