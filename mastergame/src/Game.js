@@ -69,7 +69,7 @@ export default function Guesses({sequence}) {
 
    
     return (
-        <div className="numbers">
+        <div style={{margin:"0", overflow:"auto"}} className="numbers">
             <Secret sequence={sequence} win={win}/>
             <div>
                 <input style={{backgroundColor:"black", color:"green"}} value={first} onChange={handleFirst} type="number"></input>
