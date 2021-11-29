@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css';
 import Game from './Game'
 import {useState, useEffect} from 'react'
-import Secret from './Secret'
+
 
 
 function App() {
@@ -21,13 +21,11 @@ function App() {
     })
   },[])
 
-//  console.log(sequence)
+
      
-  
   return (
     <div className="numbers">
       <h1>Mastermind</h1>
-      
       <Game sequence={sequence}/>
     </div>
   );
