@@ -25,11 +25,16 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 Running it locally:
 
 In your terminal, navigate to the directory where you would like to clone this repository
+<br/>
 
-#### Run `git clone git@github.com:lucybellott/linkedinmaster.git`
-#### cd  `mastergame`
-#### Run `npm install`
-#### Run `npm start`
+ Run `git clone git@github.com:lucybellott/linkedinmaster.git`
+ <br/>
+ cd  `mastergame`
+ <br/>
+ Run `npm install`
+ <br/>
+ Run `npm start`
+ <br/>
 #### The game will start on port 3000
 
 
