@@ -1,4 +1,5 @@
 # Mastermind
+![mastermind](https://i.ibb.co/Z8y6LKn/Screen-Shot-2021-11-29-at-4-25-44-PM.png)
 
 Mastermind is a game where the computer generates a secret code of four numbers between 0 and 7. The player must guess the secret code based on hints provided. The computer will inform the player when:
 <br/>
@@ -12,7 +13,6 @@ It will not reveal which number was guessed correctly.
 <br/>
 A player will have 10 attempts to guess the combination.
 
-![mastermind](https://i.ibb.co/Z8y6LKn/Screen-Shot-2021-11-29-at-4-25-44-PM.png)
 
 ## Tech 
 
@@ -36,7 +36,7 @@ In your terminal, navigate to the directory where you would like to clone this r
 
  Run `git clone git@github.com:lucybellott/linkedinmaster.git`
  <br/>
- cd  `mastergame`
+ cd   `mastergame`
  <br/>
  Run `npm install`
  <br/>
