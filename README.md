@@ -2,15 +2,17 @@
 
 Mastermind is a game where the computer generates a secret code of four numbers between 0 and 7. The player must guess the secret code based on hints provided. The computer will inform the player when:
 <br/>
-They have guessed a correct number in the correct position.
+- They have guessed a correct number in the correct position.
 <br/>
-They have guessed a correct number in the wrong position. 
+- They have guessed a correct number in the wrong position. 
 <br/>
-If none of the numbers guessed are correct. 
+- If none of the numbers guessed are correct. 
 <br/>
 It will not reveal which number was guessed correctly.
 <br/>
 A player will have 10 attempts to guess the combination.
+
+![mastermind](https://i.ibb.co/Z8y6LKn/Screen-Shot-2021-11-29-at-4-25-44-PM.png)
 
 ## Tech 
 
