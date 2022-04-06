@@ -1,30 +1,45 @@
 import React from 'react'
-import Secret from './Secret'
+import HiddenCode from './HiddenCode'
 import {useState} from 'react'
 
-export default function Guesses({sequence}) {
-    
 
+export default function Guesses({sequence}) {
+
+
+    //turn this into an array of inputs
     const [first, setFirst] = useState("0")
     const [second, setSecond] = useState("0")
     const [third, setThird] = useState("0")
     const [fourth, setFourth] = useState("0")
+    
+    const [turns, setTurns] = useState(10)
+    const [win, setWin] = useState(false)
+    
+    const [logData, setLogData] = useState([])
 
-    const handleFirst = (e) => setFirst(e.target.value)
+   
+   //make this one function for all inputs that won't allow a number higher than 7 to be entered
+    const handleFirst = (e) => {
+         if (e.target.value >= 0 && e.target.value <= 7) {
+             setFirst(e.target.value) 
+         }
+         
+    }
     const handleSecond = (e) => setSecond(e.target.value)
     const handleThird = (e) => setThird(e.target.value)
     const handleFourth = (e) => setFourth(e.target.value)
 
-    const [turns, setTurns] = useState(10)
-    const [win, setWin] = useState(false)
-    const [logfile, setLogfile] =useState([])
+    
+   //use array from state as playerGuess
     let playerGuess = [];
-        playerGuess.push(first, second, third, fourth)
+    playerGuess.push(first, second, third, fourth)
+    console.log(playerGuess)
+    
     let i;
     let rightNumberAndIndexCount = 0;
     let wrongIndexCount = 0;
    
-
+    //change this function to include a POST request
      function handleGuess() {
         let rightNumberAndIndex = ""
         let wrongIndex = ""
@@ -44,11 +59,11 @@ export default function Guesses({sequence}) {
                 wrongIndex =`${wrongIndexCount} right number(s) in the wrong position(s)`
             }
             
-            if (sequence[i] === playerGuess[i] && rightNumberAndIndexCount == 4) {
+            if (sequence[i] === playerGuess[i] && rightNumberAndIndexCount === 4) {
                 setWin(true)
             }
            
-        }
+      }
        
         if(rightNumberAndIndex === "" && wrongIndex ==="" ){
             allWrongGuess = "No correct numbers"
@@ -59,21 +74,27 @@ export default function Guesses({sequence}) {
                       wrongGuess: allWrongGuess
                     }
         
-        setLogfile([...logfile, data])
+        setLogData([...logData, data])
                 
      }
-
+        
+     
    
     return (
         <div style={{margin:"0", overflow:"auto"}} className="numbers">
-            <Secret sequence={sequence} win={win}/>
+            <HiddenCode sequence={sequence} win={win}/>
+           
             <div>
+                <div>
                 <input style={{backgroundColor:"black", color:"green"}} value={first} onChange={handleFirst} type="number"></input>
                 <input style={{backgroundColor:"black", color:"green"}} value ={second} onChange={handleSecond} type="number"></input>
                 <input style={{backgroundColor:"black", color:"green"}} value={third} onChange={handleThird} type="number"></input>
                 <input style={{backgroundColor:"black", color:"green"}} value={fourth} onChange={handleFourth} type="number"></input>
                 <br/>
                 <br/>
+                </div>
+              
+                
                 {turns > 0 && win === true ?
                     <h4 style={{color: "limegreen"}}>👏👏🎉 You win!!! 🎉👏👏</h4> 
                     : turns > 0 ?
@@ -84,10 +105,12 @@ export default function Guesses({sequence}) {
                         <p>You have {turns} guesses left</p>
                        
                         <hr/>
-                        {logfile.map(item => 
+                        {logData.map(item => 
+                            
                            <div>
                               <p>You guessed {item.guessedSequence}.</p>
-                              <span style={{color: "limegreen"}}>{item.correctAnswer}</span> <span style={{color: "red"}}>{item.wrongPosition}</span> <span style={{color: "red"}}>{item.wrongGuess}</span> 
+                              <span style={{color: "limegreen"}}>{item.correctAnswer}</span> 
+                              <span style={{color: "red"}}>{item.wrongPosition}</span> <span style={{color: "red"}}>{item.wrongGuess}</span> 
                               <br/><br/>
                             </div> )}
                             
@@ -95,6 +118,6 @@ export default function Guesses({sequence}) {
                         : <h5>❌ You're out of guesses ❌</h5>
                 }
             </div>
-        </div>
+     </div>
     )
 }
