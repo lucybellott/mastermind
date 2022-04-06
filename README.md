@@ -23,7 +23,7 @@ This project was built using React and Bootstrap
 
 Components:
 
-App --> Game --> Secret
+App --> Game --> HiddenCode
 
 ## Available Scripts
 
@@ -41,7 +41,7 @@ Running it locally:
 In your terminal, navigate to the directory where you would like to clone this repository
 <br/>
 
- Run `git clone git@github.com:lucybellott/linkedinmaster.git`
+ Run `git clone `
  <br/>
  cd   `mastergame`
  <br/>
