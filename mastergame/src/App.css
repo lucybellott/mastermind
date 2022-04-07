@@ -11,6 +11,16 @@ h1 {
   padding-top: 60px;
 }
 
+#score-board {
+  border-color: green;
+  border-width: 2px;
+  text-align: center;
+  margin: 20px;
+}
+
+
+
+
 .number-input {
   text-align: center;
   width: 8%;

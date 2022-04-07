@@ -14,17 +14,9 @@ export default function Secret({sequence, win}) {
                 { win === true ? 
                 <div>
                     <p>🔑 🔑 🔑 🔑</p>
-                    <form>
-                        <label>Add your name to the board!</label>
-                        <br/>
-                        <input type="text" placeholder="Enter your Name"></input>
-                        <button type="submit">Submit</button>
-                    </form>
                     <br/>
                 </div>
-            
-                 : 
-
+               : 
                 <div>
                     <p>🔒 🔒 🔒 🔒</p>
                     <p style={{color: "green"}}>Pick four numbers between 0 and 7</p>

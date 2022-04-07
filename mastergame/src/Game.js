@@ -1,5 +1,6 @@
 import React from 'react'
 import HiddenCode from './HiddenCode'
+import ScoreBoard from './ScoreBoard'
 import {useState} from 'react'
 
 
@@ -12,6 +13,13 @@ export default function Guesses({sequence}) {
     const [third, setThird] = useState("0")
     const [fourth, setFourth] = useState("0")
 
+    const [turns, setTurns] = useState(10)
+    const [win, setWin] = useState(false)
+    
+    const [logData, setLogData] = useState([])
+
+    const [trialCounter, setTrialCounter] = useState(0)
+
     let inputArray = [];
     let j;
     for(j=0; j<4; j++) {
@@ -20,28 +28,29 @@ export default function Guesses({sequence}) {
     
     //not able to generate inputs through map
     const [guessInputs, setGuessInputs] = useState(inputArray)
-    //console.log(guessInputs)
+    
+    
+    //  const oneInput =  guessInputs.map(item => {
+    //     return <div>
+    //         <input>{item}</input>
+    //     </div>
+    // }) 
 
 
      
-    const [turns, setTurns] = useState(10)
-    const [win, setWin] = useState(false)
-    
-    const [logData, setLogData] = useState([])
-
-   
+ 
    //make this one function for all inputs that won't allow a number higher than 7 to be entered
     const handleFirst = (e) => {
          if (e.target.value >= 0 && e.target.value <= 7) {
              setFirst(e.target.value) 
-         }
-         
-    }
+         }}
+    
+    
     const handleSecond = (e) => setSecond(e.target.value)
     const handleThird = (e) => setThird(e.target.value)
     const handleFourth = (e) => setFourth(e.target.value)
 
-    
+   //start trials counter 
    //use array from state as playerGuess
     let playerGuess = [];
     playerGuess.push(first, second, third, fourth)
@@ -51,13 +60,14 @@ export default function Guesses({sequence}) {
     let rightNumberAndIndexCount = 0;
     let wrongIndexCount = 0;
    
-    
    
      function handleGuess() {
         let rightNumberAndIndex = ""
         let wrongIndex = ""
         let allWrongGuess =""
         setTurns(() => turns -1)
+        setTrialCounter(() => trialCounter +1)
+        
         
         
         for(i = 0; i < sequence.length; i++) {
@@ -90,14 +100,10 @@ export default function Guesses({sequence}) {
         setLogData([...logData, data])
                 
      }
-
-    //  const oneInput =  guessInputs.map(item => {
-    //     return item
-    // }) 
-
-   
+    
    
     return (
+        
         <div style={{margin:"0", overflow:"auto"}} className="numbers">
             <HiddenCode sequence={sequence} win={win}/>
            
@@ -122,9 +128,9 @@ export default function Guesses({sequence}) {
                         <p>You have {turns} guesses left</p>
                        
                         <hr/>
-                        {logData.map(item => 
+                        {logData.map((item, index) => 
                             
-                           <div>
+                           <div key={index}>
                               <p>You guessed {item.guessedSequence}.</p>
                               <span style={{color: "limegreen"}}>{item.correctAnswer}</span> 
                               <span style={{color: "red"}}>{item.wrongPosition}</span> <span style={{color: "red"}}>{item.wrongGuess}</span> 
@@ -135,6 +141,10 @@ export default function Guesses({sequence}) {
                         : <h5>❌ You're out of guesses ❌</h5>
                 }
             </div>
-     </div>
+            <hr/>
+            <ScoreBoard win={win} trialCounter={trialCounter}/>
+         </div>
+        
+     
     )
 }
