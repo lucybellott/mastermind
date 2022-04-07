@@ -11,7 +11,19 @@ export default function Guesses({sequence}) {
     const [second, setSecond] = useState("0")
     const [third, setThird] = useState("0")
     const [fourth, setFourth] = useState("0")
+
+    let inputArray = [];
+    let j;
+    for(j=0; j<4; j++) {
+        inputArray.push("0")
+    }
     
+    //not able to generate inputs through map
+    const [guessInputs, setGuessInputs] = useState(inputArray)
+    //console.log(guessInputs)
+
+
+     
     const [turns, setTurns] = useState(10)
     const [win, setWin] = useState(false)
     
@@ -39,7 +51,8 @@ export default function Guesses({sequence}) {
     let rightNumberAndIndexCount = 0;
     let wrongIndexCount = 0;
    
-    //change this function to include a POST request
+    
+   
      function handleGuess() {
         let rightNumberAndIndex = ""
         let wrongIndex = ""
@@ -77,8 +90,12 @@ export default function Guesses({sequence}) {
         setLogData([...logData, data])
                 
      }
-        
-     
+
+    //  const oneInput =  guessInputs.map(item => {
+    //     return item
+    // }) 
+
+   
    
     return (
         <div style={{margin:"0", overflow:"auto"}} className="numbers">
@@ -86,10 +103,10 @@ export default function Guesses({sequence}) {
            
             <div>
                 <div>
-                <input style={{backgroundColor:"black", color:"green"}} value={first} onChange={handleFirst} type="number"></input>
-                <input style={{backgroundColor:"black", color:"green"}} value ={second} onChange={handleSecond} type="number"></input>
-                <input style={{backgroundColor:"black", color:"green"}} value={third} onChange={handleThird} type="number"></input>
-                <input style={{backgroundColor:"black", color:"green"}} value={fourth} onChange={handleFourth} type="number"></input>
+                <input className="number-input" style={{backgroundColor:"black", color:"green"}} value={first} onChange={handleFirst} type="number"></input>
+                <input className="number-input" style={{backgroundColor:"black", color:"green"}} value ={second} onChange={handleSecond} type="number"></input>
+                <input className="number-input" style={{backgroundColor:"black", color:"green"}} value={third} onChange={handleThird} type="number"></input>
+                <input className="number-input" style={{backgroundColor:"black", color:"green"}} value={fourth} onChange={handleFourth} type="number"></input>
                 <br/>
                 <br/>
                 </div>

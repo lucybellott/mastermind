@@ -11,7 +11,7 @@ h1 {
   padding-top: 60px;
 }
 
-input {
+.number-input {
   text-align: center;
   width: 8%;
   height: 45px;
