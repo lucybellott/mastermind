@@ -23,10 +23,7 @@ function App() {
     })
   },[])
 
-
-
-
-     
+   
   return (
     <div className="numbers">
       <h1>Mastermind</h1>

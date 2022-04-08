@@ -4,56 +4,70 @@ import ScoreBoard from './ScoreBoard'
 import {useState} from 'react'
 
 
-export default function Guesses({sequence}) {
+export default function Game({sequence}) {
 
 
-    //turn this into an array of inputs
-    const [first, setFirst] = useState("0")
-    const [second, setSecond] = useState("0")
-    const [third, setThird] = useState("0")
-    const [fourth, setFourth] = useState("0")
+    const [inputData, setInputData] = useState({
+        first: "0",
+        second: "0",
+        third: "0",
+        fourth: "0"
+      })
+    
+    // const [first, setFirst] = useState("0")
+    // const [second, setSecond] = useState("0")
+    // const [third, setThird] = useState("0")
+    // const [fourth, setFourth] = useState("0")
 
     const [turns, setTurns] = useState(10)
-    const [win, setWin] = useState(false)
     
+    const [win, setWin] = useState(false)
+   
     const [logData, setLogData] = useState([])
-
+    
     const [trialCounter, setTrialCounter] = useState(0)
 
-    let inputArray = [];
-    let j;
-    for(j=0; j<4; j++) {
-        inputArray.push("0")
-    }
+    // let inputArray = [];
+    // let j;
+    // for(j=0; j<4; j++) {
+    //     inputArray.push("1")
+    // }
     
     //not able to generate inputs through map
-    const [guessInputs, setGuessInputs] = useState(inputArray)
+    // const [guessInputs, setGuessInputs] = useState(inputArray)
     
-    
-    //  const oneInput =  guessInputs.map(item => {
-    //     return <div>
-    //         <input>{item}</input>
-    //     </div>
-    // }) 
+    // const handleInputs = (e, index) => {
+    //     let temp = guessInputs
+    //     temp[index] = e.target.value
+    //     setGuessInputs(temp)
+    //     console.log(temp)
+    // }
 
-
-     
- 
-   //make this one function for all inputs that won't allow a number higher than 7 to be entered
-    const handleFirst = (e) => {
-         if (e.target.value >= 0 && e.target.value <= 7) {
-             setFirst(e.target.value) 
-         }}
+    // const singleInput = guessInputs.map(oneinput => {
+    //     return<>
+    //         <input type="text" value={oneinput} onChange={handleInputs}/>
+    //     </>
+    // })
     
-    
-    const handleSecond = (e) => setSecond(e.target.value)
-    const handleThird = (e) => setThird(e.target.value)
-    const handleFourth = (e) => setFourth(e.target.value)
 
-   //start trials counter 
-   //use array from state as playerGuess
+    //make this one function for all inputs that won't allow a number higher than 7 to be entered
+    // const handleFirst = (e) => {
+    //      if (e.target.value >= 0 && e.target.value <= 7) {
+    //          setFirst(e.target.value) 
+    //      }}
+    
+    // const handleSecond = (e) => setSecond(e.target.value)
+    // const handleThird = (e) => setThird(e.target.value)
+    // const handleFourth = (e) => setFourth(e.target.value)
+
+    const handleChange = (e) => {
+        if (e.target.value >= 0 && e.target.value <= 7) { 
+             setInputData({ ...inputData, [e.target.name]: e.target.value })
+    }}
+    
+  
     let playerGuess = [];
-    playerGuess.push(first, second, third, fourth)
+    playerGuess.push(inputData.first, inputData.second, inputData.third, inputData.fourth)
     console.log(playerGuess)
     
     let i;
@@ -109,10 +123,11 @@ export default function Guesses({sequence}) {
            
             <div>
                 <div>
-                <input className="number-input" style={{backgroundColor:"black", color:"green"}} value={first} onChange={handleFirst} type="number"></input>
-                <input className="number-input" style={{backgroundColor:"black", color:"green"}} value ={second} onChange={handleSecond} type="number"></input>
-                <input className="number-input" style={{backgroundColor:"black", color:"green"}} value={third} onChange={handleThird} type="number"></input>
-                <input className="number-input" style={{backgroundColor:"black", color:"green"}} value={fourth} onChange={handleFourth} type="number"></input>
+                 
+                <input className="number-input" style={{backgroundColor:"black", color:"green"}} name="first" value={inputData.first} onChange={handleChange} type="number"></input>
+                <input className="number-input" style={{backgroundColor:"black", color:"green"}} name="second" value ={inputData.second} onChange={handleChange} type="number"></input>
+                <input className="number-input" style={{backgroundColor:"black", color:"green"}} name="third" value={inputData.third} onChange={handleChange} type="number"></input>
+                <input className="number-input" style={{backgroundColor:"black", color:"green"}} name="fourth" value={inputData.fourth} onChange={handleChange} type="number"></input>
                 <br/>
                 <br/>
                 </div>

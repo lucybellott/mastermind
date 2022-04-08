@@ -6,6 +6,7 @@ export default function ScoreBoard({win, trialCounter}) {
   const [boardData, setBoardData] = useState([])
   const [winner, setWinner] = useState("")
 
+  //GET request from backend
   useEffect(() => {
     fetch('http://localhost:3000/games')
     .then(resp => resp.json())
@@ -13,7 +14,7 @@ export default function ScoreBoard({win, trialCounter}) {
     }, [])
 
     
-  
+  //render winners data from backend
  const boardInfo = boardData.map(item => {
         return <>
             
@@ -24,11 +25,13 @@ export default function ScoreBoard({win, trialCounter}) {
         </>
     })
     
+    //display new winner on board
     const displayWinner = (newWinner) => {
            let winnerArray = [...boardData, newWinner]
            return setBoardData(winnerArray)
        }
     
+    //POST request   
     const handleSubmit = (e) => {
         e.preventDefault()
 
