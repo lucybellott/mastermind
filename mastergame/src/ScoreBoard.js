@@ -24,14 +24,37 @@ export default function ScoreBoard({win, trialCounter}) {
             </tr>
         </>
     })
+
+ const pastTrials = boardData.map(item => item.trials)
+ console.log(pastTrials)
+ console.log(trialCounter)
+
+ 
+ //Checking if new score is better than past 10
+ function betterScore () {
+    let i;
+    for(i=0; i < pastTrials.length; i++) {
+        if(trialCounter <= pastTrials[i] && pastTrials.length <= 10) {
+            return true
+        }
+      }
+ }
     
     //display new winner on board
     const displayWinner = (newWinner) => {
-           let winnerArray = [...boardData, newWinner]
-           return setBoardData(winnerArray)
-       }
+
+        if(betterScore() === true) {
+
+            let winnerArray = [...boardData, newWinner]
+              return setBoardData(winnerArray)
+        }
+
+        else  {
+            alert("Your number of trials must be lower than existing ones")
+        }
+    }
     
-    //POST request   
+    //POST request to the backend  
     const handleSubmit = (e) => {
         e.preventDefault()
 

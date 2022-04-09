@@ -13,11 +13,7 @@ export default function Game({sequence}) {
         third: "0",
         fourth: "0"
       })
-    
-    // const [first, setFirst] = useState("0")
-    // const [second, setSecond] = useState("0")
-    // const [third, setThird] = useState("0")
-    // const [fourth, setFourth] = useState("0")
+
 
     const [turns, setTurns] = useState(10)
     
@@ -27,38 +23,6 @@ export default function Game({sequence}) {
     
     const [trialCounter, setTrialCounter] = useState(0)
 
-    // let inputArray = [];
-    // let j;
-    // for(j=0; j<4; j++) {
-    //     inputArray.push("1")
-    // }
-    
-    //not able to generate inputs through map
-    // const [guessInputs, setGuessInputs] = useState(inputArray)
-    
-    // const handleInputs = (e, index) => {
-    //     let temp = guessInputs
-    //     temp[index] = e.target.value
-    //     setGuessInputs(temp)
-    //     console.log(temp)
-    // }
-
-    // const singleInput = guessInputs.map(oneinput => {
-    //     return<>
-    //         <input type="text" value={oneinput} onChange={handleInputs}/>
-    //     </>
-    // })
-    
-
-    //make this one function for all inputs that won't allow a number higher than 7 to be entered
-    // const handleFirst = (e) => {
-    //      if (e.target.value >= 0 && e.target.value <= 7) {
-    //          setFirst(e.target.value) 
-    //      }}
-    
-    // const handleSecond = (e) => setSecond(e.target.value)
-    // const handleThird = (e) => setThird(e.target.value)
-    // const handleFourth = (e) => setFourth(e.target.value)
 
     const handleChange = (e) => {
         if (e.target.value >= 0 && e.target.value <= 7) { 
