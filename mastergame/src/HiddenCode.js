@@ -7,8 +7,8 @@ export default function Secret({sequence, win}) {
     return (
         <div> 
             
-            <div style={{color: "antiquewhite", marginTop:"20px"}}>
-                <em style={{fontWeight: "bold"}}>Can you break the hidden code?</em>
+            <div style={{marginTop:"20px"}}>
+                <em>Can you break the hidden code?</em>
                 <br/>
                 <br/>
                 { win === true ? 
@@ -19,7 +19,7 @@ export default function Secret({sequence, win}) {
                : 
                 <div>
                     <p>🔒 🔒 🔒 🔒</p>
-                    <p style={{color: "green"}}>Pick four numbers between 0 and 7</p>
+                    <p>Pick four numbers between 0 and 7</p>
                 </div>
                 }
                 

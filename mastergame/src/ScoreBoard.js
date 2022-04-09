@@ -26,16 +26,19 @@ export default function ScoreBoard({win, trialCounter}) {
     })
 
  const pastTrials = boardData.map(item => item.trials)
- console.log(pastTrials)
- console.log(trialCounter)
+//  console.log(pastTrials)
+//  console.log(trialCounter)
 
  
- //Checking if new score is better than past 10
+ //Compare new score to existing 10 scores on the board
  function betterScore () {
     let i;
     for(i=0; i < pastTrials.length; i++) {
         if(trialCounter <= pastTrials[i] && pastTrials.length <= 10) {
             return true
+        }
+        else {
+            return false
         }
       }
  }
@@ -43,22 +46,15 @@ export default function ScoreBoard({win, trialCounter}) {
     //display new winner on board
     const displayWinner = (newWinner) => {
 
-        if(betterScore() === true) {
-
             let winnerArray = [...boardData, newWinner]
               return setBoardData(winnerArray)
-        }
-
-        else  {
-            alert("Your number of trials must be lower than existing ones")
-        }
     }
     
     //POST request to the backend  
     const handleSubmit = (e) => {
         e.preventDefault()
-
-        let wallData = {
+    
+      let wallData = {
             username: winner,
             trials: trialCounter
             }
@@ -73,25 +69,26 @@ export default function ScoreBoard({win, trialCounter}) {
                 .then((res) => res.json())
                 .then(inputData => displayWinner(inputData))
                 setWinner("")
-                
     }
     
     
     return (
-    <div>
+      <div>
 
-        <h4>Wall of champions</h4>
+        <h4> 🏁 Top 10 Wall of Champions 🏁</h4>
 
-        {win === true?
+            {win === true && betterScore() === true ?
             <div>
                 <form onSubmit={handleSubmit}>
-                <label>Add your name to the Wall of Champions!</label>
+                <label>Add your name to the Top 10 Wall of Champions!</label>
                 <br/>
                 <input type="text" placeholder="Enter your Name" value={winner} onChange={(e)=> setWinner(e.target.value)}></input>
                 <button type="submit">Submit</button>
                 </form>
             </div> 
-       : null
+            : win === true && betterScore() === false ?
+            <p className="warning">Your number of trials must be lower than existing ones</p> 
+            : null
        }
 
         <table>

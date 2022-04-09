@@ -24,6 +24,14 @@ class GamesController < ApplicationController
     end
   end
 
+#   def create
+#     game = Game.create!(game_params)
+    
+#     if Game.all.length <= 10 && Game.find(params[:trials])
+
+#     render json: game, status: :created
+# end
+
   # PATCH/PUT /games/1
   def update
     if @game.update(game_params)
@@ -37,6 +45,8 @@ class GamesController < ApplicationController
   def destroy
     @game.destroy
   end
+
+ 
 
   private
     # Use callbacks to share common setup or constraints between actions.
