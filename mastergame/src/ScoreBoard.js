@@ -17,7 +17,7 @@ export default function ScoreBoard({win, trialCounter}) {
  const sortedInfo = boardData.sort((a, b) => (a.trials > b.trials) ? 1 : -1)
   
     
-  //render winners data from backend
+  //render sorted winners data from backend
  const boardInfo = sortedInfo.map(item => {
         return <>
             
@@ -32,30 +32,36 @@ export default function ScoreBoard({win, trialCounter}) {
 
 
  const pastTrials = boardData.map(item => item.trials)
- // console.log(pastTrials)
-  //console.log(trialCounter)
-
-
 
  
  //Compare new score to existing 10 scores on the board
  function betterScore () {
     let i;
-    for(i=0; i < pastTrials.length; i++) {
-        if(trialCounter <= pastTrials[i] && pastTrials.length <= 10) {
-            //console.log(pastTrials[i])
-            return true
-        }
+    
+    if (pastTrials.length <= 10) {
+        return true
+
+    }
+    else {
+
+        for(i=0; i < pastTrials.length; i++) {
+             if(trialCounter < pastTrials[i]) {
+                //console.log(pastTrials[i])
+                return true
+            }
+            
+          }
+          return false
       }
- }
+    }
 
 
     
     //display new winner on board
     const displayWinner = (newWinner) => {
 
-            let winnerArray = [...boardData, newWinner]
-              return setBoardData(winnerArray)
+            //let winnerArray = [...boardData, newWinner]
+              return setBoardData(newWinner)
     }
     
     //POST request to the backend  
@@ -75,11 +81,13 @@ export default function ScoreBoard({win, trialCounter}) {
                 body: JSON.stringify(wallData),
                 })
                 .then((res) => res.json())
-                .then(inputData => displayWinner(inputData))
+                .then(inputData => {
+                    console.log(inputData)
+                    displayWinner(inputData)})
                 setWinner("")
     }
     
-    
+    console.log(betterScore())
     return (
       <div>
 
@@ -94,7 +102,7 @@ export default function ScoreBoard({win, trialCounter}) {
                 <button type="submit">Submit</button>
                 </form>
             </div> 
-            : win === true && betterScore() !== true ?
+            : win === true && betterScore() === false ?
             <p className="warning">Your number of trials must be lower than existing ones</p> 
             : null
        }

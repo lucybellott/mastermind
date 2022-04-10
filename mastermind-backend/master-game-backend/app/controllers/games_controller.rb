@@ -5,7 +5,9 @@ class GamesController < ApplicationController
   def index
     @games = Game.all
 
-    render json: @games
+    sorted_game =  @games.order(:trials)
+
+    render json: sorted_game
   end
 
   # GET /games/1
@@ -15,13 +17,32 @@ class GamesController < ApplicationController
 
   # POST /games
   def create
-    @game = Game.new(game_params)
+  @game = Game.new(game_params)
 
-    if @game.save
-      render json: @game, status: :created, location: @game
+  if Game.count < 10
+    @game.save 
+    render json: @game, status: :created, location: @game
+
+  else
+    
+  if @game[:trials] < lowest_score 
+    delete_user = Game.find_by(trials: lowest_score)
+    delete_user.destroy
+   
+   @game.save 
+    render json: Game.all, status: :created, location: @game
+   
     else
       render json: @game.errors, status: :unprocessable_entity
     end
+
+   end
+
+  end
+
+  #LOWEST SCORE
+  def lowest_score
+    Game.maximum(:trials)
   end
 
 #   def create
@@ -32,16 +53,19 @@ class GamesController < ApplicationController
 #     render json: game, status: :created
 # end
 
-  # PATCH/PUT /games/1
-  def update
-    if @game.update(game_params)
-      render json: @game
-    else
-      render json: @game.errors, status: :unprocessable_entity
-    end
-  end
+ 
+# PATCH/PUT /games/1
+  # def update
+  #   if @game.update(game_params)
+  #     render json: @game
+  #   else
+  #     render json: @game.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /games/1
+  
+  
   def destroy
     @game.destroy
   end
