@@ -13,9 +13,12 @@ export default function ScoreBoard({win, trialCounter}) {
     .then(data => setBoardData(data))
     }, [])
 
+ //Sorting by number of trials
+ const sortedInfo = boardData.sort((a, b) => (a.trials > b.trials) ? 1 : -1)
+  
     
   //render winners data from backend
- const boardInfo = boardData.map(item => {
+ const boardInfo = sortedInfo.map(item => {
         return <>
             
             <tr key={item.id}>
@@ -25,9 +28,14 @@ export default function ScoreBoard({win, trialCounter}) {
         </>
     })
 
+    //console.log(boardInfo)
+
+
  const pastTrials = boardData.map(item => item.trials)
-//  console.log(pastTrials)
-//  console.log(trialCounter)
+ // console.log(pastTrials)
+  //console.log(trialCounter)
+
+
 
  
  //Compare new score to existing 10 scores on the board
@@ -35,13 +43,13 @@ export default function ScoreBoard({win, trialCounter}) {
     let i;
     for(i=0; i < pastTrials.length; i++) {
         if(trialCounter <= pastTrials[i] && pastTrials.length <= 10) {
+            //console.log(pastTrials[i])
             return true
-        }
-        else {
-            return false
         }
       }
  }
+
+
     
     //display new winner on board
     const displayWinner = (newWinner) => {
@@ -86,7 +94,7 @@ export default function ScoreBoard({win, trialCounter}) {
                 <button type="submit">Submit</button>
                 </form>
             </div> 
-            : win === true && betterScore() === false ?
+            : win === true && betterScore() !== true ?
             <p className="warning">Your number of trials must be lower than existing ones</p> 
             : null
        }
