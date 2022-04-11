@@ -30,10 +30,11 @@ class GamesController < ApplicationController
     delete_user.destroy
    
    @game.save 
-    render json: Game.all, status: :created, location: @game
+    render json: @game, status: :created, location: @game
    
     else
       render json: @game.errors, status: :unprocessable_entity
+   
     end
 
    end

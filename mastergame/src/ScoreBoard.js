@@ -6,6 +6,9 @@ export default function ScoreBoard({win, trialCounter}) {
   const [boardData, setBoardData] = useState([])
   const [winner, setWinner] = useState("")
 
+
+console.log(boardData)
+
   //GET request from backend
   useEffect(() => {
     fetch('http://localhost:3000/games')
@@ -15,7 +18,8 @@ export default function ScoreBoard({win, trialCounter}) {
 
  //Sorting by number of trials
  const sortedInfo = boardData.sort((a, b) => (a.trials > b.trials) ? 1 : -1)
-  
+ 
+
     
   //render sorted winners data from backend
  const boardInfo = sortedInfo.map(item => {
@@ -55,13 +59,28 @@ export default function ScoreBoard({win, trialCounter}) {
       }
     }
 
+   // console.log(betterScore())
+
 
     
     //display new winner on board
     const displayWinner = (newWinner) => {
 
-            //let winnerArray = [...boardData, newWinner]
-              return setBoardData(newWinner)
+        let winnerArray 
+        
+        if (boardData.length === 10) {
+           let dataPop = boardData.pop()
+             winnerArray = [...dataPop, newWinner]
+        }
+
+        else {
+             winnerArray = [...boardData, newWinner]
+        }
+
+           
+            // winnerArray.push(newWinner)
+            
+            return setBoardData(winnerArray)
     }
     
     //POST request to the backend  
@@ -85,6 +104,9 @@ export default function ScoreBoard({win, trialCounter}) {
                     console.log(inputData)
                     displayWinner(inputData)})
                 setWinner("")
+                // .catch((error) => {
+                //     console.log(error)
+                //   })
     }
     
     console.log(betterScore())
