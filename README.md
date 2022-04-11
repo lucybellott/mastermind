@@ -13,26 +13,36 @@ Mastermind is a game where the computer generates a secret code of four numbers 
 It will not reveal which number was guessed correctly.
 <br/>
 A player will have 10 attempts to guess the combination.
+<br/>
+
+There's a score board to display the Top 10 scores
 
 
 ## Tech 
 
-This project was built using React and Bootstrap
+This project was built using Rails backend with a Postgres database and React frontend
 
 ## Structure
 
-Components:
+ Frontend Components:
 
-App --> Game --> HiddenCode
+- App <br/>
+↓ <br/>
+  - Game <br/>
+↓ <br/>
+    - Hidden Code <br/>  
+    - ScoreBoard
 
-## Available Scripts
+<br/>
 
-In the project directory, you can run:
+Backend Table:
 
-### `npm start`
+Game
+  - username 
+  - trials 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  http://localhost:3000/games
+
 
 ## Setup
 
@@ -41,21 +51,40 @@ Running it locally:
 In your terminal, navigate to the directory where you would like to clone this repository
 <br/>
 
- Run `git clone `
+ - Run `git clone git@github.com:lucybellott/mastermind.git `
  <br/>
- cd   `mastergame`
+
+ - Running the Rails backend:
  <br/>
- Run `npm install`
+ - cd `mastermind-backend`
  <br/>
- Run `npm start`
+ - cd `master-game-backend`
  <br/>
-#### The game will start on port 3000
+ - Run `bundle install` 
+ <br/>
+ - Run `rails s`
+ <br/>
+
+ #### The backend will start on port 3000
+ <br/>
+
+
+ Running the React frontend:
+ <br/>
+ - cd   `mastergame`
+ <br/>
+ - Run `npm install`
+ <br/>
+ - Run `npm start`
+ <br/>
+#### The frontend will start on port 3001
 
 ## Ideas for future versions
 
 - Create more hints
+- Levels
 - Users 
-- ScoreBoard
+
 
 
 

@@ -7,7 +7,7 @@ export default function ScoreBoard({win, trialCounter}) {
   const [winner, setWinner] = useState("")
 
 
-console.log(boardData)
+//console.log(boardData)
 
   //GET request from backend
   useEffect(() => {
@@ -46,40 +46,34 @@ console.log(boardData)
         return true
 
     }
+    
     else {
 
         for(i=0; i < pastTrials.length; i++) {
              if(trialCounter < pastTrials[i]) {
-                //console.log(pastTrials[i])
+               
                 return true
             }
-            
-          }
-          return false
-      }
+        }
+    }
+    //return false
+      
     }
 
-   // console.log(betterScore())
-
-
-    
+  
     //display new winner on board
     const displayWinner = (newWinner) => {
 
-        let winnerArray 
-        
-        if (boardData.length === 10) {
-           let dataPop = boardData.pop()
-             winnerArray = [...dataPop, newWinner]
-        }
 
-        else {
-             winnerArray = [...boardData, newWinner]
-        }
 
-           
-            // winnerArray.push(newWinner)
-            
+        let winnerArray = [...boardData, newWinner]
+        console.log(winnerArray.length)
+        if (winnerArray.length === 11 ) {
+            //console.log('its 10!')
+            winnerArray.sort((a, b) => (a.trials > b.trials) ? 1 : -1)
+            winnerArray.pop()
+        }
+    
             return setBoardData(winnerArray)
     }
     
@@ -101,12 +95,17 @@ console.log(boardData)
                 })
                 .then((res) => res.json())
                 .then(inputData => {
-                    console.log(inputData)
-                    displayWinner(inputData)})
-                setWinner("")
-                // .catch((error) => {
-                //     console.log(error)
-                //   })
+                    
+                   
+
+                       displayWinner(inputData)
+                   
+                
+                    setWinner("")
+                })
+                .catch((error) => {
+                    console.log(error)
+                  })
     }
     
     console.log(betterScore())
@@ -124,7 +123,7 @@ console.log(boardData)
                 <button type="submit">Submit</button>
                 </form>
             </div> 
-            : win === true && betterScore() === false ?
+            : win === true && betterScore() !== true ?
             <p className="warning">Your number of trials must be lower than existing ones</p> 
             : null
        }
