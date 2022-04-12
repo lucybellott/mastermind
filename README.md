@@ -1,5 +1,6 @@
 # Mastermind
-![mastermind](https://iili.io/5Q7Je9.png)
+<!-- ![mastermind](https://iili.io/5Q7Je9.png) -->
+![mastermind](https://i.ibb.co/pRjj34K/Screen-Shot-2022-04-11-at-7-23-47-PM.png)
 <br/>
 
 Mastermind is a game where the computer generates a secret code of four numbers between 0 and 7. The player must guess the secret code based on hints provided. The computer will inform the player when:
@@ -77,6 +78,7 @@ In your terminal, navigate to the directory where you would like to clone this r
  <br/>
  - Run `npm start`
  <br/>
+
 #### The frontend will start on port 3001
 
 ## Ideas for future versions
