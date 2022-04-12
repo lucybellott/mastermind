@@ -13,8 +13,7 @@ export default function ScoreBoard({win, trialCounter}) {
     .then(resp => resp.json())
     .then(data => {
         setBoardData(data)
-        
-    })
+     })
     }, [])
 
 
@@ -116,8 +115,8 @@ export default function ScoreBoard({win, trialCounter}) {
                 </form>
             </div> 
             
-           : null
-           }
+            : null
+            }
            <br/>
         <p id="message">Your number of trials must be lower than existing ones to enter the board</p> 
 

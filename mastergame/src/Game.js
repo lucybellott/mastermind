@@ -31,6 +31,7 @@ export default function Game({sequence}) {
    
     //onChange function for guess inputs
     const handleChange = (e) => {
+        
         //number entered can't be higher than 7
         if (e.target.value >= 0 && e.target.value <= 7) { 
              setInputData({ ...inputData, [e.target.name]: e.target.value })
@@ -42,6 +43,7 @@ export default function Game({sequence}) {
    
    //onClick logic of Guess button
      function handleGuess() {
+        
         let rightNumberAndIndex = ""
         let wrongIndex = ""
         let allWrongGuess =""
