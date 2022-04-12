@@ -34,11 +34,8 @@ class GamesController < ApplicationController
    
     else
       render json: @game.errors, status: :unprocessable_entity
-   
+     end
     end
-
-   end
-
   end
 
   #LOWEST SCORE
@@ -46,26 +43,6 @@ class GamesController < ApplicationController
     Game.maximum(:trials)
   end
 
-#   def create
-#     game = Game.create!(game_params)
-    
-#     if Game.all.length <= 10 && Game.find(params[:trials])
-
-#     render json: game, status: :created
-# end
-
- 
-# PATCH/PUT /games/1
-  # def update
-  #   if @game.update(game_params)
-  #     render json: @game
-  #   else
-  #     render json: @game.errors, status: :unprocessable_entity
-  #   end
-  # end
-
-  # DELETE /games/1
-  
   
   def destroy
     @game.destroy
