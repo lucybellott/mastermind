@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Secret({sequence, win}) {
     console.log(sequence)
-  //create a button for POST request
+  
     
     return (
         <div> 

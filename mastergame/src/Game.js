@@ -26,7 +26,7 @@ export default function Game({sequence}) {
     //Pushing input values into one array of guesses
     let playerGuess = [];
     playerGuess.push(inputData.first, inputData.second, inputData.third, inputData.fourth)
-    console.log(playerGuess)
+    
    
    
     //onChange function for guess inputs
@@ -72,7 +72,7 @@ export default function Game({sequence}) {
             }
            
       }
-       //no correct numbers guessed
+       //No correct numbers guessed
         if(rightNumberAndIndex === "" && wrongIndex ==="" ){
             allWrongGuess = "No correct numbers"
         } 
@@ -106,8 +106,12 @@ export default function Game({sequence}) {
                 </div>
               
                 
-                {turns > 0 && win === true ?
-                    <h4 className="win">👏👏🎉 You win!!! 🎉👏👏</h4> 
+                {turns >= 0 && win === true ?
+                    <>
+                    <h4 className="win">👏👏 You win!!! 👏👏</h4> 
+                    <br/>
+                    <h5>Trials: {trialCounter}</h5>
+                    </>
                     : turns > 0 ?
                      <div>
                         <button type="button" className="btn btn-success" onClick={handleGuess}>Guess!</button>

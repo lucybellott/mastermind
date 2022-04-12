@@ -14,13 +14,10 @@ function App() {
     fetch('https://www.random.org/integers/?num=4&min=0&max=7&col=1&base=10&format=plain&rnd=new')
     .then(resp=>resp.text())
     .then(numbers => {
-      //cosole.log(numbers)
       const numbersArray = numbers.split("\n")
       numbersArray.pop();
       setSequence(numbersArray)
-      //console.log(sequence)
-
-    })
+      })
   },[])
 
    

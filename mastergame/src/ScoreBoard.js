@@ -5,24 +5,22 @@ export default function ScoreBoard({win, trialCounter}) {
   
   const [boardData, setBoardData] = useState([])
   const [winner, setWinner] = useState("")
-
-
-//console.log(boardData)
+  
 
   //GET request from backend
   useEffect(() => {
     fetch('http://localhost:3000/games')
     .then(resp => resp.json())
-    .then(data => setBoardData(data))
+    .then(data => {
+        setBoardData(data)
+        
+    })
     }, [])
 
- //Sorting by number of trials
- const sortedInfo = boardData.sort((a, b) => (a.trials > b.trials) ? 1 : -1)
- 
 
-    
-  //render sorted winners data from backend
- const boardInfo = sortedInfo.map(item => {
+ 
+//Render sorted winners data from backend
+ const boardInfo = boardData.map(item => {
         return <>
             
             <tr key={item.id}>
@@ -32,50 +30,46 @@ export default function ScoreBoard({win, trialCounter}) {
         </>
     })
 
-    //console.log(boardInfo)
 
 
  const pastTrials = boardData.map(item => item.trials)
-
+ let maxTrials = Math.max(...pastTrials)
+ 
  
  //Compare new score to existing 10 scores on the board
  function betterScore () {
-    let i;
     
-    if (pastTrials.length <= 10) {
-        return true
-
-    }
-    
-    else {
-
-        for(i=0; i < pastTrials.length; i++) {
-             if(trialCounter < pastTrials[i]) {
-               
-                return true
-            }
+    if(trialCounter < maxTrials) {
+            return true
         }
-    }
-    //return false
+
+    else if (trialCounter >= maxTrials && pastTrials.length < 10)
+        { 
+            return true
+        }  
       
     }
 
   
-    //display new winner on board
+    //Replacing the last place on the board with new winner with that has a better score
     const displayWinner = (newWinner) => {
 
+         let winnerArray = [...boardData, newWinner]
+           
+            if (winnerArray.length > 10 ) {
+                
+                winnerArray.sort((a, b) => (a.trials > b.trials) ? 1 : -1)
+                winnerArray.pop()
 
+            }
 
-        let winnerArray = [...boardData, newWinner]
-        console.log(winnerArray.length)
-        if (winnerArray.length === 11 ) {
-            //console.log('its 10!')
-            winnerArray.sort((a, b) => (a.trials > b.trials) ? 1 : -1)
-            winnerArray.pop()
-        }
+            else {
+                winnerArray.sort((a, b) => (a.trials > b.trials) ? 1 : -1)
+            }
     
             return setBoardData(winnerArray)
     }
+
     
     //POST request to the backend  
     const handleSubmit = (e) => {
@@ -95,38 +89,37 @@ export default function ScoreBoard({win, trialCounter}) {
                 })
                 .then((res) => res.json())
                 .then(inputData => {
-                    
-                   
-
-                       displayWinner(inputData)
-                   
-                
-                    setWinner("")
+                      displayWinner(inputData)
+                      
+                      setWinner("")
                 })
                 .catch((error) => {
                     console.log(error)
                   })
     }
     
-    console.log(betterScore())
+    
     return (
       <div>
 
         <h4> 🏁 Top 10 Wall of Champions 🏁</h4>
+        <br/>
 
             {win === true && betterScore() === true ?
             <div>
                 <form onSubmit={handleSubmit}>
                 <label>Add your name to the Top 10 Wall of Champions!</label>
                 <br/>
+                <br/>
                 <input type="text" placeholder="Enter your Name" value={winner} onChange={(e)=> setWinner(e.target.value)}></input>
-                <button type="submit">Submit</button>
+                <button type="submit" className="btn btn-success">Submit</button>
                 </form>
             </div> 
-            : win === true && betterScore() !== true ?
-            <p className="warning">Your number of trials must be lower than existing ones</p> 
-            : null
-       }
+            
+           : null
+           }
+           <br/>
+        <p id="message">Your number of trials must be lower than existing ones to enter the board</p> 
 
         <table>
           <tbody id="score-board">
