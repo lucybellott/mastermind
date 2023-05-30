@@ -30,7 +30,7 @@ export default function ScoreBoard({win, trialCounter}) {
     })
 
 
-
+// returns the largest number of trials 
  const pastTrials = boardData.map(item => item.trials)
  let maxTrials = Math.max(...pastTrials)
  
@@ -50,7 +50,7 @@ export default function ScoreBoard({win, trialCounter}) {
     }
 
   
-    //Replacing the last place on the board with new winner with that has a better score
+    //Replacing the last place on the board with new winner that has a better score
     const displayWinner = (newWinner) => {
 
          let winnerArray = [...boardData, newWinner]
@@ -70,7 +70,7 @@ export default function ScoreBoard({win, trialCounter}) {
     }
 
     
-    //POST request to the backend  
+    //POST request to the backend when the user submits their name
     const handleSubmit = (e) => {
         e.preventDefault()
     
@@ -103,6 +103,7 @@ export default function ScoreBoard({win, trialCounter}) {
 
         <h4> 🏁 Top 10 Wall of Champions 🏁</h4>
         <br/>
+            {/* If player wins form is displayed otherwise it's not rendered */}
 
             {win === true && betterScore() === true ?
             <div>

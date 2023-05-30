@@ -13,7 +13,7 @@ export default function Secret({sequence, win}) {
                 <br/>
                 { win === true ? 
                 <div>
-                    <p>🔑 🔑 🔑 🔑</p>
+                    <p>🔑 🔑 🔑 🔑</p> 
                     <br/>
                 </div>
                : 
