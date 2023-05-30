@@ -9,9 +9,6 @@ class Game < ApplicationRecord
     #     errors.add(:base, "No more than 10 games allowed on record") unless Game.all.length < 10
     # end
     
-    # def lowest_score
-    #     Game.maximum(:trials)
-    # end
-
+ 
 
 end

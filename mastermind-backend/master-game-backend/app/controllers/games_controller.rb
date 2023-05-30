@@ -7,7 +7,7 @@ class GamesController < ApplicationController
 
     sorted_game =  @games.order(:trials)
 
-    render json: sorted_game
+    render json: sorted_game 
   end
 
   # GET /games/1
