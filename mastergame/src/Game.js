@@ -41,7 +41,7 @@ export default function Game({sequence}) {
     let playerGuess = [];
    // playerGuess.push(inputData.first, inputData.second, inputData.third, inputData.fourth)
    playerGuess.push(inputData)
-   console.log(playerGuess[0])
+  // console.log(playerGuess[0])
    
     //onChange function for guess inputs
     // const handleChange = (e) => {
