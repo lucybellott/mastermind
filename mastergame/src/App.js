@@ -8,6 +8,7 @@ import {useState, useEffect} from 'react'
 function App() {
 
   const [sequence, setSequence] = useState("") 
+  const [selectedMode, setSelectedMode] = useState("easy")
   
   
   useEffect(() => {
@@ -20,11 +21,18 @@ function App() {
       })
   },[])
 
+  const easySequence = sequence.slice(0,2)
+  const selectedSequence = selectedMode === "easy" ? easySequence : sequence;
+
    
   return (
     <div className="numbers">
       <h1>Mastermind</h1>
-      <Game sequence={sequence} />
+      <select onChange={(e) => setSelectedMode(e.target.value)}>
+        <option value="easy">Easy</option>
+        <option value="hard">Hard</option>
+      </select>
+      <Game sequence={selectedSequence} />
     </div> 
   );
 }
