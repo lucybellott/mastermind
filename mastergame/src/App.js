@@ -28,7 +28,7 @@ function App() {
   return (
     <div className="numbers">
       <h1>Mastermind</h1>
-      <div id="dropdown">
+      <div>
       <select onChange={(e) => setSelectedMode(e.target.value)}>
         <option value="easy">Easy</option>
         <option value="hard">Hard</option>
