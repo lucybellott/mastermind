@@ -85,6 +85,18 @@ em {
   color: antiquewhite;
 }
 
-
+select {
+  
+  background-color: #232221;
+  color: white;
+  border-radius: 20px;
+  width: 8%;
+  text-align: center;
+  height: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  background-color:black;
+}
 
 
