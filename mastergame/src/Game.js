@@ -168,12 +168,18 @@ export default function Game({sequence}) {
           if (wrongIndexCount > 0) {
             wrongIndex = `${wrongIndexCount} right number(s) in the wrong position(s)`;
           }
+        
+          //No correct numbers guessed
+         if(rightNumberAndIndex === "" && wrongIndex ==="" ){
+                allWrongGuess = "No correct numbers guessed"
+             } 
       
           // Data to display feedback
           const data = {
             correctAnswer: rightNumberAndIndex,
             guessedSequence: playerGuess,
             wrongPosition: wrongIndex,
+            wrongGuess: allWrongGuess
           };
       
          // setTurns((prevTurns) => prevTurns - 1);
