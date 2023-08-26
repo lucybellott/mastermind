@@ -1,6 +1,6 @@
 import React from 'react'
 import HiddenCode from './HiddenCode'
-//import ScoreBoard from './ScoreBoard'
+// import ScoreBoard from './ScoreBoard'
 import {useState, useEffect} from 'react'
 
 
@@ -41,7 +41,7 @@ export default function Game({sequence}) {
     let playerGuess = [];
    // playerGuess.push(inputData.first, inputData.second, inputData.third, inputData.fourth)
    playerGuess.push(inputData)
-  // console.log(playerGuess[0])
+   console.log(playerGuess[0])
    
     //onChange function for guess inputs
     // const handleChange = (e) => {
@@ -136,10 +136,11 @@ export default function Game({sequence}) {
         } 
         
         else {
-          let rightNumberAndIndexCount = 0;
-          let wrongIndexCount = 0;
-          let rightNumberAndIndex = "";
-          let wrongIndex = "";
+          let rightNumberAndIndexCount = 0
+          let wrongIndexCount = 0
+          let rightNumberAndIndex = ""
+          let wrongIndex = ""
+          let allWrongGuess =""
           setTurns(() => turns -1)
           setTrialCounter(() => trialCounter +1)
 
@@ -168,11 +169,11 @@ export default function Game({sequence}) {
           if (wrongIndexCount > 0) {
             wrongIndex = `${wrongIndexCount} right number(s) in the wrong position(s)`;
           }
-        
-          //No correct numbers guessed
-         if(rightNumberAndIndex === "" && wrongIndex ==="" ){
-                allWrongGuess = "No correct numbers guessed"
-             } 
+              //No correct numbers guessed
+          if(rightNumberAndIndex === "" && wrongIndex ==="" ){
+            allWrongGuess = "No correct numbers guessed"
+          } 
+      
       
           // Data to display feedback
           const data = {
@@ -182,12 +183,12 @@ export default function Game({sequence}) {
             wrongGuess: allWrongGuess
           };
       
-         // setTurns((prevTurns) => prevTurns - 1);
-         // setTrialCounter((prevTrialCounter) => prevTrialCounter + 1);
+        
           
           if (rightNumberAndIndexCount === sequence.length) {
             setWin(true);
           }
+
       
           setLogData([...logData, data]);
         }
@@ -280,8 +281,10 @@ export default function Game({sequence}) {
           <HiddenCode sequence={sequence} win={win} />
       
           <div>
+            
             <div>
-              {Array.from(sequence).map((number, index) => (
+              {
+               Array.from(sequence).map((number, index) => (
                 <input
                   key={index}
                   type="text"
@@ -291,7 +294,10 @@ export default function Game({sequence}) {
                   className="number-input"
                 />
               ))}
-            </div>
+              <br/>
+              <br/> 
+              </div>
+            
       
             {turns > 0 && !win ? (
               <div>
@@ -316,12 +322,12 @@ export default function Game({sequence}) {
                 ))}
               </div>
             ) : (
-              <h5>{win ? "👏👏 You win!!! 👏👏" : "❌ You're out of guesses ❌"}</h5>
+              <h5>{win ? "YOU WIN!!!" : "❌ You're out of guesses ❌"}</h5>
             )}
           </div>
-              {/* DEPLOY SCOREBOARD LATER */}
-          {/* <hr />
-          <ScoreBoard win={win} trialCounter={trialCounter} /> */}
+              {/* hide score board to deploy later */}
+          {/* <hr /> */}
+          {/* <ScoreBoard win={win} trialCounter={trialCounter} /> */}
         </div>
       );
       
