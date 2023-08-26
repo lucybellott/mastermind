@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Secret({sequence, win}) {
+export default function HiddenCode({sequence, win}) {
     console.log(sequence)
   
     
@@ -8,12 +8,16 @@ export default function Secret({sequence, win}) {
         <div> 
             
             <div style={{marginTop:"20px"}}>
-                <em>Can you break the hidden code?</em>
-                <br/>
+                <h5>Can you crack the code?</h5>
+                
                 <br/>
                 { win === true ? 
                 <div>
                     <p>🔑 🔑 🔑 🔑</p> 
+                    <br/>
+                    <h5>CONGRATS</h5>
+                    <img alt="Einstein" src="https://upload.wikimedia.org/wikipedia/en/8/86/Einstein_tongue.jpg"/>
+                    <br/>
                     <br/>
                 </div>
                : 
