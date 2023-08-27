@@ -23,7 +23,7 @@ export default function HiddenCode({sequence, win}) {
                : 
                 <div>
                     <p>🔒 🔒 🔒 🔒</p>
-                    <p>Pick four numbers between 0 and 7</p>
+                    <p>Pick only numbers between 0 and 7</p>
                 </div>
                 }
                 
