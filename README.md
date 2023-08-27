@@ -7,7 +7,7 @@
 https://master-mind-react.netlify.app/
 <br/>
 
-Mastermind is a game where the computer generates a secret code of four numbers between 0 and 7. The player must guess the secret code based on hints provided. The computer will inform the player when:
+Mastermind is a game where the computer generates a secret code between 0 and 7. The player must guess the secret code based on hints provided. The computer will inform the player when:
 <br/>
 - They have guessed a correct number in the correct position.
 
