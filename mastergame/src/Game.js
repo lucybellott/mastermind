@@ -1,37 +1,40 @@
 
-
 import React, { useState, useEffect } from 'react';
 import HiddenCode from './HiddenCode';
 // import ScoreBoard from './ScoreBoard'
 
 export default function Game({ sequence }) {
-  const [inputData, setInputData] = useState([]);
-  const [turns, setTurns] = useState(10);
-  const [win, setWin] = useState(false);
-  const [logData, setLogData] = useState([]);
-  const [trialCounter, setTrialCounter] = useState(0);
+  // State to store the player's input data (guesses)
+  const [inputData, setInputData] = useState([])
+  const [turns, setTurns] = useState(10)
+  const [win, setWin] = useState(false) // State to track if the player wins
+  const [logData, setLogData] = useState([])
+  const [trialCounter, setTrialCounter] = useState(0)
 
   useEffect(() => {
+    // Initialize the input data based on the sequence length
     const initialInputs = Array.from({ length: sequence.length }, () => '');
     setInputData(initialInputs);
-  }, [sequence]);
+  }, [sequence])
 
+  // Function to handle the player's guess
   const handleGuess = () => {
     const compare = logData.find((i) => {
       return inputData.toString() === i.guessedSequence.toString();
-    });
+    })
 
     if (compare) {
       alert(`You have already tried that sequence`);
     } else {
-      let rightNumberAndIndexCount = 0;
-      let wrongIndexCount = 0;
-      let rightNumberAndIndex = '';
-      let wrongIndex = '';
-      let allWrongGuess = '';
+      // Initialize counts and messages
+      let rightNumberAndIndexCount = 0
+      let wrongIndexCount = 0
+      let rightNumberAndIndex = ''
+      let wrongIndex = ''
+      let allWrongGuess = ''
 
-      setTurns(turns - 1);
-      setTrialCounter(trialCounter + 1);
+      setTurns(turns - 1)
+      setTrialCounter(trialCounter + 1)
 
       for (let i = 0; i < sequence.length; i++) {
         if (sequence[i] === inputData[i]) {
@@ -41,6 +44,7 @@ export default function Game({ sequence }) {
         }
       }
 
+      // Generate feedback messages
       if (rightNumberAndIndexCount > 0) {
         rightNumberAndIndex = `${rightNumberAndIndexCount} right number(s) in the right position(s)`;
       }
@@ -56,21 +60,22 @@ export default function Game({ sequence }) {
         guessedSequence: inputData,
         wrongPosition: wrongIndex,
         wrongGuess: allWrongGuess,
-      };
+      }
 
       if (rightNumberAndIndexCount === sequence.length) {
         setWin(true);
       }
 
-      setLogData([...logData, data]);
+      setLogData([...logData, data])
     }
   };
 
+  // Function to handle input changes
   const handleInput = (index, value) => {
     if (!win) {
       const newInputs = [...inputData];
       newInputs[index] = value;
-      setInputData(newInputs);
+      setInputData(newInputs)
     }
   };
 
@@ -79,7 +84,7 @@ export default function Game({ sequence }) {
       <HiddenCode sequence={sequence} win={win} />
 
       <div>
-        {!win && (
+        {!win && ( // Render input fields only if the player hasn't won
           <>
             {Array.from(sequence).map((number, index) => (
               <input
