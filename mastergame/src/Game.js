@@ -124,7 +124,7 @@ export default function Game({ sequence }) {
             ))}
           </div>
         ) : (
-          <h5>{win ? 'YOU WIN!!!' : '❌ You\'re out of guesses ❌'}</h5>
+          <h5>{win ? "YOU'VE CRACKED THE CODE!" : '❌ You\'re out of guesses ❌'}</h5>
         )}
       </div>
     </div>
