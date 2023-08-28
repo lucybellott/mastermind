@@ -100,3 +100,17 @@ select {
 }
 
 
+#lock-img {
+  width: 20%;
+  border-radius: 100px;
+  
+}
+
+#message {
+  font-weight: bold;
+  color: green;
+}
+
+#winner {
+  width: 50%;
+}
