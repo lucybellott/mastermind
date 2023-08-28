@@ -13,17 +13,19 @@ export default function HiddenCode({sequence, win}) {
                 <br/>
                 { win === true ? 
                 <div>
-                    <p>🔑 🔑 🔑 🔑</p> 
+                    
                     <br/>
                     <h5>CONGRATS</h5>
-                    <img alt="Einstein" src="https://upload.wikimedia.org/wikipedia/en/8/86/Einstein_tongue.jpg"/>
+                    <img alt="winner" id="winner" src="https://www.netcov.com/wp-content/pubfiles/2022/07/shutterstock_1092829541.jpg"/>
                     <br/>
                     <br/>
                 </div>
                : 
                 <div>
-                    <p>🔒 🔒 🔒 🔒</p>
-                    <p>Pick only numbers between 0 and 7</p>
+                    <img id="lock-img" alt="lock" src="https://cybersafe.news/wp-content/uploads/2018/10/cyber-security-tool-1600x800.jpeg"/>
+                    <br/>
+                    <br/>
+                    <p>The code consists of numbers between 0 and 7</p>
                 </div>
                 }
                 
