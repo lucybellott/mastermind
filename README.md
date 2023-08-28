@@ -1,9 +1,13 @@
 # Mastermind
 <!-- ![mastermind](https://iili.io/5Q7Je9.png) -->
-![mastermind](https://i.postimg.cc/RqrJPjcv/Screen-Shot-2022-04-11-at-7-23-47-PM.png)
+![mastermind](https://i.postimg.cc/rwDpSqHf/Screen-Shot-2023-08-28-at-3-41-45-PM.png)
 <br/>
 
-Mastermind is a game where the computer generates a secret code of four numbers between 0 and 7. The player must guess the secret code based on hints provided. The computer will inform the player when:
+## Play it!
+https://master-mind-react.netlify.app/
+<br/>
+
+Mastermind is a game where the computer generates a secret code between 0 and 7. The player must guess the secret code based on hints provided. The computer will inform the player when:
 <br/>
 - They have guessed a correct number in the correct position.
 
