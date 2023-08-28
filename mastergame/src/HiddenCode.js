@@ -25,7 +25,7 @@ export default function HiddenCode({sequence, win}) {
                     <img id="lock-img" alt="lock" src="https://cybersafe.news/wp-content/uploads/2018/10/cyber-security-tool-1600x800.jpeg"/>
                     <br/>
                     <br/>
-                    <p>The code consists of numbers between 0 and 7</p>
+                    <p id="message">The code consists of numbers between 0 and 7</p>
                 </div>
                 }
                 
