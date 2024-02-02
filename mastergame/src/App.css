@@ -37,7 +37,7 @@ h1 {
 .numbers {
   
   text-align: center;
-  background-color: rgb(26, 24, 24);
+  background-color: rgb(17, 14, 14);
   color:green;
   position: absolute;
   width: 100%; 
@@ -78,7 +78,7 @@ table {
 
 h5 {
   font-weight: bold;
-   color: antiquewhite;
+   color: green;
 }
 
 #message {
@@ -96,19 +96,20 @@ select {
   font-size: 15px;
   font-weight: bold;
   border: none;
-  background-color:black;
+  background-color:rgb(67, 63, 63);
 }
 
 
 #lock-img {
-  width: 12%;
-  border-radius: 5px;
+  width: 10%;
+  
+  border-radius: 100px;
   
 }
 
 #message {
   font-weight: bold;
-  color: green;
+  color: antiquewhite;
 }
 
 #winner {
