@@ -1,6 +1,6 @@
 # Mastermind
 <!-- ![mastermind](https://iili.io/5Q7Je9.png) -->
-![mastermind](https://i.postimg.cc/rwDpSqHf/Screen-Shot-2023-08-28-at-3-41-45-PM.png)
+![mastermind](https://i.postimg.cc/d3KFmYSt/Screen-Shot-2023-12-09-at-6-45-30-PM.png)
 <br/>
 
 ## Play it!
