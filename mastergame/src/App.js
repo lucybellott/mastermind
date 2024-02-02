@@ -7,7 +7,7 @@ import {useState, useEffect} from 'react'
 
 function App() {
 
-  const [sequence, setSequence] = useState("") 
+  const [sequence, setSequence] = useState([]) 
   const [selectedMode, setSelectedMode] = useState("easy")
   
   

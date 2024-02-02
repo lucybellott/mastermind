@@ -86,7 +86,7 @@ export default function Game({ sequence }) {
       <div>
         {!win && ( // Render input fields only if the player hasn't won
           <>
-            {Array.from(sequence).map((number, index) => (
+            {sequence.map((number, index) => (
               <input
                 key={index}
                 type="text"
