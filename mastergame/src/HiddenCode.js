@@ -22,7 +22,7 @@ export default function HiddenCode({sequence, win}) {
                 </div>
                : 
                 <div>
-                    <img id="lock-img" alt="lock" src="https://img.freepik.com/premium-vector/closed-padlock-digital-background-cyber-security_42077-21756.jpg"/>
+                    <img id="lock-img" alt="lock" src="https://i.postimg.cc/bJ62DZBj/Screen-Shot-2023-12-09-at-6-24-21-PM.png"/>
                     <br/>
                     <br/>
                     <p id="message">The code consists of numbers between 0 and 7</p>
