@@ -6,11 +6,12 @@ import HiddenCode from './HiddenCode';
 export default function Game({ sequence }) {
   // State to store the player's input data (guesses)
   const [inputData, setInputData] = useState([])
-  const [turns, setTurns] = useState(10)
+  const [turns, setTurns] = useState(10) //track remaining attempts
   const [win, setWin] = useState(false) // State to track if the player wins
-  const [logData, setLogData] = useState([])
+  const [logData, setLogData] = useState([]) //store the history of guesses
   const [trialCounter, setTrialCounter] = useState(0)
 
+  //Function to generate inputs dynamically
   useEffect(() => {
     // Initialize the input data based on the sequence length
     const initialInputs = Array.from({ length: sequence.length }, () => '');
@@ -18,7 +19,9 @@ export default function Game({ sequence }) {
   }, [sequence])
 
   // Function to handle the player's guess
+  // it checks for duplicate guesses, updates trial counts and turns left, generates feedback messages
   const handleGuess = () => {
+    
     const compare = logData.find((i) => {
       return inputData.toString() === i.guessedSequence.toString();
     })
@@ -44,7 +47,7 @@ export default function Game({ sequence }) {
         }
       }
 
-      // Generate feedback messages
+      // feedback messages
       if (rightNumberAndIndexCount > 0) {
         rightNumberAndIndex = `${rightNumberAndIndexCount} right number(s) in the right position(s)`;
       }
@@ -55,6 +58,7 @@ export default function Game({ sequence }) {
         allWrongGuess = 'No correct numbers guessed';
       }
 
+      //Obj to store info data of past trials
       const data = {
         correctAnswer: rightNumberAndIndex,
         guessedSequence: inputData,

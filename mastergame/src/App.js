@@ -7,10 +7,13 @@ import {useState, useEffect} from 'react'
 
 function App() {
 
+  // used the State hook to store an array of random numbers which will be the hidden sequence
+  // created another state variable to handle selected difficulty level
   const [sequence, setSequence] = useState([]) 
   const [selectedMode, setSelectedMode] = useState("easy")
   
   
+  //fetch request to generate random sequence of numbers 
   useEffect(() => {
     fetch('https://www.random.org/integers/?num=4&min=0&max=7&col=1&base=10&format=plain&rnd=new')
     .then(resp=>resp.text())
@@ -21,6 +24,8 @@ function App() {
       })
   },[])
 
+  // Created easySequence variable. 
+  // the selectedSequence variable is set to either the easySequence or the full sequence
   const easySequence = sequence.slice(0,2)
   const selectedSequence = selectedMode === "easy" ? easySequence : sequence;
 
