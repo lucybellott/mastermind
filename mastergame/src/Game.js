@@ -82,6 +82,7 @@ export default function Game({ sequence }) {
   //new code
   const handlePlayAgain = () => {
     // Reset all state variables to restart the game
+    //need to fetch new sequence after losing
     setInputData(Array.from({ length: sequence.length }, () => ''));
     setTurns(10);
     setWin(false);
