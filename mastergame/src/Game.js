@@ -151,7 +151,8 @@ export default function Game({ sequence }) {
           {win ? (
           <>
           <h5> YOU'VE CRACKED THE CODE! </h5>
-          <button type="button" onClick={handlePlayAgain}>
+          <br/>
+          <button type="button" className="btn btn-success" onClick={handlePlayAgain}>
             Play Again
           </button>
           </>
@@ -160,7 +161,8 @@ export default function Game({ sequence }) {
           : 
           <>
           <h5>❌ You're out of guesses ❌</h5>
-          <button type="button" onClick={handlePlayAgain}>
+          <br/>
+          <button type="button" className="btn btn-success" onClick={handlePlayAgain}>
             Play Again
           </button>
           </>}
