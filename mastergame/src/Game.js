@@ -70,9 +70,25 @@ export default function Game({ sequence }) {
         setWin(true);
       }
 
+      //new code
+      if (turns === 0) {
+        setWin(false);
+      }
+
       setLogData([...logData, data])
     }
   };
+
+  //new code
+  const handlePlayAgain = () => {
+    // Reset all state variables to restart the game
+    setInputData(Array.from({ length: sequence.length }, () => ''));
+    setTurns(10);
+    setWin(false);
+    setLogData([]);
+    setTrialCounter(0);
+  };
+
 
   // Function to handle input changes
   const handleInput = (index, value) => {
@@ -116,6 +132,8 @@ export default function Game({ sequence }) {
 
             <hr />
 
+     
+
             {logData.map((item, index) => (
               <div key={index}>
                 <p>You guessed {item.guessedSequence.join(', ')}.</p>
@@ -128,8 +146,26 @@ export default function Game({ sequence }) {
             ))}
           </div>
         ) : (
-          <h5>{win ? "YOU'VE CRACKED THE CODE!" : '❌ You\'re out of guesses ❌'}</h5>
+          <div>
+          {win ? (
+          <>
+          <h5> YOU'VE CRACKED THE CODE! </h5>
+          <button type="button" onClick={handlePlayAgain}>
+            Play Again
+          </button>
+          </>
+          )
+          
+          : 
+          <>
+          <h5>❌ You're out of guesses ❌</h5>
+          <button type="button" onClick={handlePlayAgain}>
+            Play Again
+          </button>
+          </>}
+        </div>
         )}
+        
       </div>
     </div>
   );
