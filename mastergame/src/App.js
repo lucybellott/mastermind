@@ -11,6 +11,7 @@ function App() {
   // created another state variable to handle selected difficulty level
   const [sequence, setSequence] = useState([]) 
   const [selectedMode, setSelectedMode] = useState("easy")
+  const [gameOver, setGameOver] = useState(false)
   
   
   //fetch request to generate random sequence of numbers 
@@ -44,14 +45,16 @@ function App() {
   return (
     <div className="numbers">
       <h1>Mastermind</h1>
-      <div>
-      <select onChange={(e) => setSelectedMode(e.target.value)}>
-        <option value="easy">Easy</option>
-        <option value="hard">Hard</option>
-      </select>
-      </div>
+      {!gameOver && ( // Render dropdown only if game is not over
+        <div>
+          <select onChange={(e) => setSelectedMode(e.target.value)}>
+            <option value="easy">Easy</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+      )}
    
-      <Game sequence={selectedSequence} fetchSequence={fetchSequence} />
+      <Game sequence={selectedSequence} fetchSequence={fetchSequence} setGameOver={setGameOver} />
     </div> 
   );
 }

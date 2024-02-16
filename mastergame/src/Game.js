@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import HiddenCode from './HiddenCode';
 // import ScoreBoard from './ScoreBoard'
 
-export default function Game({ sequence, fetchSequence }) {
+export default function Game({ sequence, fetchSequence, setGameOver }) {
   // State to store the player's input data (guesses)
   const [inputData, setInputData] = useState([])
   const [turns, setTurns] = useState(10) //track remaining attempts
@@ -66,13 +66,22 @@ export default function Game({ sequence, fetchSequence }) {
         wrongGuess: allWrongGuess,
       }
 
+      console.log(turns)
+
       if (rightNumberAndIndexCount === sequence.length) {
         setWin(true);
+        setGameOver(true)
       }
 
       //new code
       if (turns === 0) {
         setWin(false);
+        setGameOver(true)
+      }
+
+      if (turns === 1) {
+        
+        setGameOver(true)
       }
 
       setLogData([...logData, data])
@@ -90,6 +99,7 @@ export default function Game({ sequence, fetchSequence }) {
     setTrialCounter(0);
 
     fetchSequence()
+    setGameOver(false)
   };
 
   // Function to handle input changes
