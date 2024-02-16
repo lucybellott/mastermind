@@ -125,6 +125,13 @@ export default function Game({ sequence, fetchSequence, setGameOver }) {
                 maxLength="1"
                 value={inputData[index]}
                 onChange={(e) => handleInput(index, e.target.value)}
+                onKeyDown={(e) => {
+                  const key = e.key
+                  const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', 'Backspace', 'Tab'];
+                    if (!allowedKeys.includes(key)) {
+                     e.preventDefault();
+                   }
+                }}
                 className="number-input"
               />
             ))}
