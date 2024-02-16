@@ -14,7 +14,7 @@ function App() {
   
   
   //fetch request to generate random sequence of numbers 
-  useEffect(() => {
+  const fetchSequence = () => {
     fetch('https://www.random.org/integers/?num=4&min=0&max=7&col=1&base=10&format=plain&rnd=new')
     .then(resp=>resp.text())
     .then(numbers => {
@@ -22,7 +22,18 @@ function App() {
       numbersArray.pop();
       setSequence(numbersArray)
       })
-  },[])
+    }
+  
+  
+  
+      useEffect(() => {
+
+        fetchSequence()
+
+    },[])
+
+     
+
 
   // Created easySequence variable. 
   // the selectedSequence variable is set to either the easySequence or the full sequence
@@ -40,7 +51,7 @@ function App() {
       </select>
       </div>
    
-      <Game sequence={selectedSequence} />
+      <Game sequence={selectedSequence} fetchSequence={fetchSequence} />
     </div> 
   );
 }

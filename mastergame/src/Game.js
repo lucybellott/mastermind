@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import HiddenCode from './HiddenCode';
 // import ScoreBoard from './ScoreBoard'
 
-export default function Game({ sequence }) {
+export default function Game({ sequence, fetchSequence }) {
   // State to store the player's input data (guesses)
   const [inputData, setInputData] = useState([])
   const [turns, setTurns] = useState(10) //track remaining attempts
@@ -79,7 +79,7 @@ export default function Game({ sequence }) {
     }
   };
 
-  //new code
+
   const handlePlayAgain = () => {
     // Reset all state variables to restart the game
     //need to fetch new sequence after losing
@@ -88,8 +88,9 @@ export default function Game({ sequence }) {
     setWin(false);
     setLogData([]);
     setTrialCounter(0);
-  };
 
+    fetchSequence()
+  };
 
   // Function to handle input changes
   const handleInput = (index, value) => {
