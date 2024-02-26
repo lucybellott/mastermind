@@ -111,6 +111,9 @@ export default function Game({ sequence, fetchSequence, setGameOver }) {
     }
   };
 
+  let test = sequence.map(v =>" " + v + " ") 
+  //console.log(test)
+
   return (
     <div className="numbers">
       <HiddenCode sequence={sequence} win={win} />
@@ -179,6 +182,8 @@ export default function Game({ sequence, fetchSequence, setGameOver }) {
           : 
           <>
           <h5>❌ You're out of guesses ❌</h5>
+          <br/>
+          <h5>The code was: {test}</h5>
           <br/>
           <button type="button" className="btn btn-success" onClick={handlePlayAgain}>
             Play Again

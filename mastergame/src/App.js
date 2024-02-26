@@ -41,7 +41,7 @@ function App() {
   const easySequence = sequence.slice(0,2)
   const selectedSequence = selectedMode === "easy" ? easySequence : sequence;
 
-   
+
   return (
     <div className="numbers">
       <h1>Mastermind</h1>
