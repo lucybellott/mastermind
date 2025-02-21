@@ -1,0 +1,8 @@
+{
+    "name": "mastermind-combined",
+    "version": "1.0.0",
+    "scripts": {
+      "heroku-postbuild": "cd client && npm install && npm run build && cd .. && rake build:frontend"
+    }
+  }
+  
