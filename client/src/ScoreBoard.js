@@ -79,7 +79,7 @@ export default function ScoreBoard({win, trialCounter}) {
             trials: trialCounter
             }
     
-            fetch('http://localhost:3000/games', {
+            fetch('/games', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
