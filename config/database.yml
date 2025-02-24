@@ -80,7 +80,9 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
+ # <<: *default
+  # database: master_game_backend_production
+  # username: master_game_backend
+  # password: <%= ENV["MASTER_GAME_BACKEND_DATABASE_PASSWORD"] %>
   <<: *default
-  database: master_game_backend_production
-  username: master_game_backend
-  password: <%= ENV["MASTER_GAME_BACKEND_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
