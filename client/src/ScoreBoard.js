@@ -9,7 +9,7 @@ export default function ScoreBoard({win, trialCounter}) {
 
   //GET request from backend
   useEffect(() => {
-    fetch('http://localhost:3000/games')
+    fetch('/games')
     .then(resp => resp.json())
     .then(data => {
         setBoardData(data)
