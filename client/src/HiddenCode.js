@@ -16,7 +16,7 @@ export default function HiddenCode({sequence, win}) {
                     
                     <br/>
                     <h5>CONGRATS</h5>
-                    <img alt="winner" id="winner" src="https://www.netcov.com/wp-content/pubfiles/2022/07/shutterstock_1092829541.jpg"/>
+                    <img alt="winner" id="winner" src="https://cdn.pixabay.com/photo/2024/09/30/16/48/ai-generated-9086228_1280.png"/>
                     <br/>
                     <br/>
                 </div>
