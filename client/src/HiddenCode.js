@@ -1,3 +1,5 @@
+//HiddenCode
+
 import React from 'react'
 
 export default function HiddenCode({sequence, win}) {
