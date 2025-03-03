@@ -48,3 +48,7 @@ end
 
 gem 'nio4r', '>= 2.5.9.pre'
 
+group :development, :test do
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+end
