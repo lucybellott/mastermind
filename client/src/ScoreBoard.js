@@ -61,6 +61,10 @@ useEffect(() => {
        
     // Sort and keep only top 10 for each difficulty
     winnerArray.sort((a, b) => (a.trials > b.trials) ? 1 : -1)
+    // Keep only the top 10 entries
+    if (winnerArray.length > 10) {
+    winnerArray = winnerArray.slice(0, 10)
+    }
     
     // Set the updated board data
     setBoardData(winnerArray)
